@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Entity;
 
 use App\Entity\Behaviour\Uuidable;
@@ -19,45 +18,45 @@ class User implements UserInterface, Serializable
     use Uuidable;
 
     /**
-     * @var string
+     * @var string | null
      *
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
-    private $fullName;
+    private ?string $fullName;
 
     /**
-     * @var string
+     * @var string | null
      *
      * @ORM\Column(type="string", unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
      */
-    private $username;
+    private ?string $username;
 
     /**
-     * @var string
+     * @var string | null
      *
      * @ORM\Column(type="string", unique=true)
      * @Assert\Email()
      */
-    private $email;
+    private ?string $email;
 
     /**
-     * @var string
+     * @var string | null
      *
      * @ORM\Column(type="string")
      */
-    private $password;
+    private ?string $password;
 
     /**
-     * @var array
+     * @var array | null
      *
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private ?array $roles = [];
 
-    public function setFullName(string $fullName): void
+    public function setFullName(?string $fullName): void
     {
         $this->fullName = $fullName;
     }
@@ -72,7 +71,7 @@ class User implements UserInterface, Serializable
         return $this->username;
     }
 
-    public function setUsername(string $username): void
+    public function setUsername(?string $username): void
     {
         $this->username = $username;
     }
@@ -82,7 +81,7 @@ class User implements UserInterface, Serializable
         return $this->email;
     }
 
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
@@ -92,7 +91,7 @@ class User implements UserInterface, Serializable
         return $this->password;
     }
 
-    public function setPassword(string $password): void
+    public function setPassword(?string $password): void
     {
         $this->password = $password;
     }
@@ -100,7 +99,7 @@ class User implements UserInterface, Serializable
     /**
      * Returns the roles or permissions granted to the user for security.
      */
-    public function getRoles(): array
+    public function getRoles(): ?array
     {
         $roles = $this->roles;
 
@@ -112,7 +111,7 @@ class User implements UserInterface, Serializable
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): void
+    public function setRoles(?array $roles): void
     {
         $this->roles = $roles;
     }
