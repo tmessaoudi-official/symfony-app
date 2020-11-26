@@ -7,8 +7,17 @@
 /public/bundles/
 /var/
 /vendor/
-/.idea
 ###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> IDE ###
+.idea
+###< IDE ###
 
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
