@@ -10,6 +10,9 @@
         "ext-json": "^8.0@RC",
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/orm": "^2.5",
+        "gesdinet/jwt-refresh-token-bundle": "^0.9.1",
+        "lexik/jwt-authentication-bundle": "^2.10",
+        "ramsey/uuid-doctrine": "^1.6",
         "symfony/apache-pack": "^1.0",
         "symfony/cache": "5.2.*",
         "symfony/cache-contracts": "^2.2",
@@ -18,6 +21,8 @@
         "symfony/flex": "^1.10",
         "symfony/framework-bundle": "5.2.*",
         "symfony/monolog-bundle": "^3.6",
+        "symfony/serializer": "5.2.*",
+        "symfony/validator": "5.2.*",
         "symfony/yaml": "5.2.*"
     },
     "require-dev": {
