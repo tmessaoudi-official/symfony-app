@@ -7,6 +7,9 @@
         "php": ">=8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "^8.0@RC",
+        "doctrine/doctrine-bundle": "^2.2",
+        "doctrine/orm": "^2.5",
         "symfony/apache-pack": "^1.0",
         "symfony/cache": "5.2.*",
         "symfony/cache-contracts": "^2.2",
@@ -16,6 +19,13 @@
         "symfony/framework-bundle": "5.2.*",
         "symfony/monolog-bundle": "^3.6",
         "symfony/yaml": "5.2.*"
+    },
+    "require-dev": {
+        "symfony/debug-bundle": "^5.2@RC",
+        "symfony/stopwatch": "^5.2@RC",
+        "symfony/twig-bundle": "^5.2@RC",
+        "symfony/var-dumper": "^5.2@RC",
+        "symfony/web-profiler-bundle": "^5.2@RC"
     },
     "config": {
         "optimize-autoloader": true,
@@ -59,12 +69,5 @@
             "allow-contrib": false,
             "require": "5.2.*"
         }
-    },
-    "require-dev": {
-        "symfony/debug-bundle": "^5.2@RC",
-        "symfony/stopwatch": "^5.2@RC",
-        "symfony/twig-bundle": "^5.2@RC",
-        "symfony/var-dumper": "^5.2@RC",
-        "symfony/web-profiler-bundle": "^5.2@RC"
     }
 }
