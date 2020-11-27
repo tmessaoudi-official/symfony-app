@@ -8,7 +8,10 @@ use App\Repository\DummyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={}
+ * )
  * @ORM\Entity(repositoryClass=DummyRepository::class)
  */
 class Dummy

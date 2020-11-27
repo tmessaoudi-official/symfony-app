@@ -6,9 +6,6 @@ lexik_jwt_authentication:
     user_identity_field: email
     user_id_claim: email
     token_extractors:
-        query_parameter:
-            enabled: true
-            name: token
         authorization_header:
             enabled: true
             prefix: Bearer

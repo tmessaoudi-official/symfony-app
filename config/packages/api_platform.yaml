@@ -8,5 +8,9 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+        api_keys:
+            apiKey:
+                name: Bearer Authorization
+                type: header
     defaults:
         stateless: true

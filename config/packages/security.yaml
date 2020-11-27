@@ -4,7 +4,7 @@ security:
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
     encoders:
         App\Entity\User:
-            algorithm: bcrypt
+            algorithm: argon2i
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -24,6 +24,8 @@ security:
             provider: app_entity_user_provider
             json_login:
                 check_path:               /api/auth/login
+                username_path: email
+                password_path: password
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
         api:
@@ -52,9 +54,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/api$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/docs.*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/auth/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/auth/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/contexts/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/*, roles: IS_AUTHENTICATED_FULLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
