@@ -16,7 +16,9 @@ use Serializable;
 /**
  * @ApiResource(
  *     attributes={"security"="is_granted('ROLE_ADMIN')"},
+ *     collectionOperations={"get"},
  *     itemOperations={
+ *         "get",
  *         "delete"={"security"="is_granted('ROLE_SUPER_ADMIN')", "security_message"="Only super admins can delete users."},
  *     }
  * )
