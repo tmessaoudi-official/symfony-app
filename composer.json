@@ -13,6 +13,8 @@
         "doctrine/doctrine-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "3.*",
         "doctrine/orm": "2.8.*",
+        "doctrine/inflector": "1.4.*",
+        "symfony/maker-bundle": "1.*",
         "gesdinet/jwt-refresh-token-bundle": "0.*",
         "lcobucci/jwt": "~3.2.5",
         "lexik/jwt-authentication-bundle": "2.*",
