@@ -57,9 +57,9 @@ security:
         - { path: ^/api$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/index.*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/docs.*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/contexts/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/auth/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/auth/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/contexts/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/*, roles: IS_AUTHENTICATED_FULLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

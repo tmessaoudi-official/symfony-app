@@ -8,10 +8,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 trait Uuidable
 {
     /**
-     * @var \Ramsey\Uuid\UuidInterface | null
-     *
      * @ORM\Id
-     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\Column(type="uuid", unique=true, nullable=false)
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      *

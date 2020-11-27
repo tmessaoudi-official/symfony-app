@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Entity\Behaviour\Arrays\Ops;
 use App\Repository\UserRepository;
 use App\Entity\Behaviour\Uuidable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -12,24 +14,25 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Serializable;
 
 /**
+ * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_ADMIN')"},
+ *     itemOperations={
+ *         "delete"={"security"="is_granted('ROLE_SUPER_ADMIN')", "security_message"="Only super admins can delete users."},
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
- *
  */
 class User implements UserInterface, Serializable
 {
     use Uuidable;
 
     /**
-     * @var string | null
-     *
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private ?string $fullName;
 
     /**
-     * @var string | null
-     *
      * @ORM\Column(type="string", unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
@@ -37,23 +40,17 @@ class User implements UserInterface, Serializable
     private ?string $username;
 
     /**
-     * @var string | null
-     *
      * @ORM\Column(type="string", unique=true)
      * @Assert\Email()
      */
     private ?string $email;
 
     /**
-     * @var string | null
-     *
      * @ORM\Column(type="string")
      */
     private ?string $password;
 
     /**
-     * @var array | null
-     *
      * @ORM\Column(type="json")
      */
     private ?array $roles = [];
@@ -128,6 +125,27 @@ class User implements UserInterface, Serializable
         $this->roles = $roles;
     }
 
+    public function clearRoles(): self
+    {
+        $this->roles = [];
+
+        return $this;
+    }
+
+    public function addRole(?string $role): self
+    {
+        Ops::addItem($this->roles, $role);
+
+        return $this;
+    }
+
+    public function removeRole(?string $role): self
+    {
+        $this->roles = Ops::removeItem($this->roles, $role);
+
+        return $this;
+    }
+
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -171,12 +189,16 @@ class User implements UserInterface, Serializable
         [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
-    /**
-     * @return Collection|Dummy[]
-     */
-    public function getDummies(): Collection
+    public function getDummies(): Collection | array
     {
         return $this->dummies;
+    }
+
+    public function clearDummies(): self
+    {
+        $this->dummies = new ArrayCollection();
+
+        return $this;
     }
 
     public function addDummy(Dummy $dummy): self
