@@ -1,4 +1,7 @@
 api_platform:
+    title: 'Symfony/ApiPlatform API'
+    description: 'A side project using symfony5.2/php8 api'
+    version: '0.1@dev'
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
