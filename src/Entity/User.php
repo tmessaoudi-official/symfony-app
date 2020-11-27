@@ -2,15 +2,17 @@
 
 namespace App\Entity;
 
+use App\Repository\UserRepository;
 use App\Entity\Behaviour\Uuidable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Serializable;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  *
  */
 class User implements UserInterface, Serializable
@@ -55,6 +57,16 @@ class User implements UserInterface, Serializable
      * @ORM\Column(type="json")
      */
     private ?array $roles = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity=Dummy::class, mappedBy="user")
+     */
+    private Collection $dummies;
+
+    public function __construct()
+    {
+        $this->dummies = new ArrayCollection();
+    }
 
     public function setFullName(?string $fullName): void
     {
@@ -157,5 +169,35 @@ class User implements UserInterface, Serializable
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
         [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    /**
+     * @return Collection|Dummy[]
+     */
+    public function getDummies(): Collection
+    {
+        return $this->dummies;
+    }
+
+    public function addDummy(Dummy $dummy): self
+    {
+        if (!$this->dummies->contains($dummy)) {
+            $this->dummies[] = $dummy;
+            $dummy->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDummy(Dummy $dummy): self
+    {
+        if ($this->dummies->removeElement($dummy)) {
+            // set the owning side to null (unless already changed)
+            if ($dummy->getUser() === $this) {
+                $dummy->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
