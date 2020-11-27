@@ -16,6 +16,7 @@
         "doctrine/orm": "2.*",
         "gesdinet/jwt-refresh-token-bundle": "0.*",
         "lexik/jwt-authentication-bundle": "2.*",
+        "lcobucci/jwt": "~3.2.5",
         "ramsey/uuid-doctrine": "1.*",
         "symfony/apache-pack": "^1.0",
         "symfony/cache": "5.2.*",
