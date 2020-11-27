@@ -10,12 +10,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Serializable;
 
 /**
  * @ApiResource(
  *     attributes={"security"="is_granted('ROLE_ADMIN')"},
+ *     normalizationContext={"groups"={"read", "uuid"}},
  *     collectionOperations={"get"},
  *     itemOperations={
  *         "get",
@@ -31,6 +33,8 @@ class User implements UserInterface, Serializable
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
+     *
+     * @Groups({"read"})
      */
     private ?string $fullName;
 
@@ -38,12 +42,16 @@ class User implements UserInterface, Serializable
      * @ORM\Column(type="string", unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
+     *
+     * @Groups({"read"})
      */
     private ?string $username;
 
     /**
      * @ORM\Column(type="string", unique=true)
      * @Assert\Email()
+     *
+     * @Groups({"read"})
      */
     private ?string $email;
 
@@ -54,11 +62,15 @@ class User implements UserInterface, Serializable
 
     /**
      * @ORM\Column(type="json")
+     *
+     * @Groups({"read"})
      */
     private ?array $roles = [];
 
     /**
      * @ORM\OneToMany(targetEntity=Dummy::class, mappedBy="user", cascade={"persist", "remove"})
+     *
+     * @Groups({"read"})
      */
     private Collection $dummies;
 
