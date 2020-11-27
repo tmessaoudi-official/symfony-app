@@ -10,7 +10,7 @@ class Ops
             $carry = [];
         }
 
-        $item = array_flip($carry)[$item] ? null : $item;
+        $item = !empty(array_flip($carry)[$item]) ? null : $item;
 
         if ($item) {
             $carry[] = $item;

@@ -58,7 +58,7 @@ class User implements UserInterface, Serializable
     private ?array $roles = [];
 
     /**
-     * @ORM\OneToMany(targetEntity=Dummy::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Dummy::class, mappedBy="user", cascade={"persist", "remove"})
      */
     private Collection $dummies;
 
@@ -136,7 +136,7 @@ class User implements UserInterface, Serializable
 
     public function addRole(?string $role): self
     {
-        Ops::addItem($this->roles, $role);
+        $this->roles = Ops::addItem($this->roles, $role);
 
         return $this;
     }
