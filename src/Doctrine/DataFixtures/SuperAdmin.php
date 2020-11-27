@@ -9,7 +9,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class SuperAdminFixture extends Fixture implements FixtureGroupInterface
+class SuperAdmin extends Fixture implements FixtureGroupInterface
 {
     protected UserPasswordEncoderInterface $userPasswordEncoder;
 
