@@ -1,4 +1,5 @@
 {% extends "base.html.twig" %}
 {% block body %}
 Hello world
+    <a href="{{ path('api_doc', {_format: 'html'}) }}">See documentation</a>
 {% endblock body %}

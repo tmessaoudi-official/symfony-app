@@ -10,7 +10,7 @@ api_platform:
         versions: [3]
         api_keys:
             apiKey:
-                name: Bearer Authorization
+                name: Authorization
                 type: header
     defaults:
         stateless: true
