@@ -110,6 +110,9 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "fgrosse/phpasn1": {
+        "version": "v2.2.0"
+    },
     "fig/link-util": {
         "version": "1.1.1"
     },
@@ -179,6 +182,15 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
@@ -201,6 +213,24 @@
         },
         "files": [
             "config/packages/ramsey_uuid_doctrine.yaml"
+        ]
+    },
+    "spomky-labs/aes-key-wrap": {
+        "version": "v6.0.0"
+    },
+    "spomky-labs/base64url": {
+        "version": "v2.0.4"
+    },
+    "spomky-labs/lexik-jose-bridge": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "db8bcdca64743ea7413cf9f40cd9c29786401136"
+        },
+        "files": [
+            "config/packages/spomky_labs_lexik_jose_bridge_bundle.yaml"
         ]
     },
     "symfony/apache-pack": {
@@ -521,8 +551,83 @@
     "symfony/yaml": {
         "version": "v5.2.0-rc2"
     },
+    "thecodingmachine/safe": {
+        "version": "v1.3.3"
+    },
     "twig/twig": {
         "version": "v3.1.1"
+    },
+    "web-token/encryption-pack": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-bundle": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-checker": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-core": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-aescbc": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-aesgcm": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-aesgcmkw": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-aeskw": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-dir": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-ecdh-es": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-experimental": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-pbes2": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-encryption-algorithm-rsa": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-key-mgmt": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-signature": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-signature-algorithm-ecdsa": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-signature-algorithm-eddsa": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-signature-algorithm-experimental": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-signature-algorithm-hmac": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-signature-algorithm-none": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-signature-algorithm-rsa": {
+        "version": "v2.2.5"
+    },
+    "web-token/jwt-util-ecc": {
+        "version": "v2.2.5"
+    },
+    "web-token/signature-pack": {
+        "version": "v2.2.5"
     },
     "webimpress/safe-writer": {
         "version": "2.1.0"

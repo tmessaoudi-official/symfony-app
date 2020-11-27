@@ -1,0 +1,12 @@
+lexik_jose:
+    ttl: '%env(int:JWT_TOKEN_TTL)%'
+    server_name: '%env(SL_JOSE_BRIDGE_SERVER_NAME)%'
+    key_set: '%env(SL_JOSE_BRIDGE_SIGNATURE_KEYSET)%'
+    key_index: '%env(SL_JOSE_BRIDGE_SIGNATURE_KEYINDEX)%'
+    signature_algorithm: 'HS512'
+    encryption:
+        enabled: true
+        key_set: '%env(SL_JOSE_BRIDGE_ENCRYPTION_KEYSET)%'
+        key_index: '%env(SL_JOSE_BRIDGE_ENCRYPTION_KEYINDEX)%'
+        key_encryption_algorithm: 'A256GCMKW'
+        content_encryption_algorithm: 'A256GCM'
