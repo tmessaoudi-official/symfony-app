@@ -4,11 +4,11 @@ namespace App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Gesdinet\JWTRefreshTokenBundle\Entity\RefreshTokenRepository;
-use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManager as BaseRefreshTokenManager;
+use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManager as OriginalRefreshTokenManager;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenInterface;
 use DateTime;
 
-class RefreshTokenManager extends BaseRefreshTokenManager
+class RefreshTokenManager extends OriginalRefreshTokenManager
 {
     protected EntityManagerInterface $objectManager;
 
