@@ -2,7 +2,7 @@
 
 namespace App\Tests\Behat\Common\Helper;
 
-class FileDownloadHelper
+class FileDownload
 {
     public static function clearDownloads($boolean, $path)
     {

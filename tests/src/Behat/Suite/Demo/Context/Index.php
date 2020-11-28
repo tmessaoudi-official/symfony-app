@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Behat\Suite\Demo\Context;
 
-use App\Tests\Behat\Common\Context\BaseContext;
+use App\Tests\Behat\Common\Context\Base;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Exception;
 
-final class DemoContext extends BaseContext implements SnippetAcceptingContext
+final class Index extends Base implements SnippetAcceptingContext
 {
     private KernelInterface $kernel;
 

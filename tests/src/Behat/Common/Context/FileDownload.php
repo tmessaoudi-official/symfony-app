@@ -7,7 +7,7 @@ use Behat\Mink\Exception\ElementNotFoundException;
 use Exception;
 use App\Tests\Behat\Common\Helper\FileDownloadHelper;
 
-class FileDownloadContext extends BaseContext implements SnippetAcceptingContext
+class FileDownload extends Base implements SnippetAcceptingContext
 {
     /**
      * @var string

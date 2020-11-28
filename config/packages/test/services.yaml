@@ -2,6 +2,6 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-#
-#    App\Tests\Behat\:
-#        resource: '../../../tests/src/Behat/*'
+
+    App\Tests\Behat\:
+        resource: '../../../tests/src/Behat/*'

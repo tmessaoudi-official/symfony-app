@@ -4,7 +4,7 @@ namespace App\Tests\Behat\Common\Context;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
 
-class ActionContext extends BaseContext implements SnippetAcceptingContext
+class Action extends Base implements SnippetAcceptingContext
 {
     /**
      * @Given I wait for :arg1 seconds

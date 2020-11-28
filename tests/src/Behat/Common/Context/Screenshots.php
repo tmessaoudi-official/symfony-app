@@ -4,7 +4,7 @@ namespace App\Tests\Behat\Common\Context;
 
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 
-class ScreenshotsContext
+class Screenshots extends Base
 {
     /**
      * Init values required for snapshots.

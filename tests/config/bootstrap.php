@@ -4,10 +4,22 @@ use Symfony\Component\Dotenv\Dotenv;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-(new Dotenv())->bootEnv(__DIR__ . '/../../.env');
-(new Dotenv())->bootEnv(__DIR__ . '/../../.env.local');
-(new Dotenv())->bootEnv(__DIR__ . '/../../.env.test');
-(new Dotenv())->bootEnv(__DIR__ . '/../../.env.test.local');
+$dotEnv = new Dotenv();
+$_ENV['APP_ENV'] = $_SERVER['APP_ENV'] = 'test';
+$dotEnv->usePutenv(true);
+$dotEnv->bootEnv(__DIR__ . '/../../.env');
+try {
+    $dotEnv->bootEnv(__DIR__ . '/../../.env.local');
+} catch (Exception $exception) {
+}
+try {
+    $dotEnv->bootEnv(__DIR__ . '/../../.env.test');
+} catch (Exception $exception) {
+}
+try {
+    $dotEnv->bootEnv(__DIR__ . '/../../.env.test.local');
+} catch (Exception $exception) {
+}
 
 passthru(sprintf(
     'APP_ENV=%s APP_DEBUG=%s php "%s/../../bin/console" c:c --no-warmup',

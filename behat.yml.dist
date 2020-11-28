@@ -7,14 +7,14 @@ default:
           paths:    false
           snippets: false
     suites:
-        default:
+        demo:
             paths:
               features: tests/src/Behat/Suite/Demo/Feature
             contexts:
-                - App\Tests\Behat\Suite\Dummy\Context\DemoContext
-                - App\Tests\Behat\Common\Context\ActionContext
-                - App\Tests\Behat\Common\Context\ScreenshotsContext
-                - App\Tests\Behat\Common\Context\FileDownloadContext
+                - App\Tests\Behat\Suite\Demo\Context\Index
+                - App\Tests\Behat\Common\Context\Action
+                - App\Tests\Behat\Common\Context\Screenshots
+                - App\Tests\Behat\Common\Context\FileDownload
                 - Behat\MinkExtension\Context\MinkContext
     extensions:
         Behat\MinkExtension:

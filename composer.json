@@ -8,7 +8,7 @@
             "email": "tmessaoudi@smart-team.tn"
         }
     ],
-    "prefer-stable": true,
+    "prefer-stable": false,
     "require": {
         "php": ">=8.0",
         "ext-ctype": "*",
