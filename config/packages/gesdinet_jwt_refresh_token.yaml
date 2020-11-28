@@ -2,4 +2,5 @@ gesdinet_jwt_refresh_token:
     ttl: '%env(int:JWT_TOKEN_TTL)%'
     user_identity_field: email
     single_use: true
+    user_provider: 'security.user.provider.concrete.app_entity_user_provider'
     token_parameter_name: 'refresh_token'

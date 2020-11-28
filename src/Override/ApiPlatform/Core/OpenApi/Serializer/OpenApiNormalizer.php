@@ -12,7 +12,7 @@ final class OpenApiNormalizer implements NormalizerInterface
 {
     private OriginalOpenApiNormalizer $decorated;
 
-    public function __construct(OriginalOpenApiNormalizer $decorated)
+    public function setDecorationInner(OriginalOpenApiNormalizer $decorated)
     {
         $this->decorated = $decorated;
     }

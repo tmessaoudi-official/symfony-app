@@ -38,9 +38,6 @@ services:
         public: true
     App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer:
         decorates: 'api_platform.openapi.normalizer'
-        arguments: [ '@App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer.inner' ]
-        autoconfigure: false
-    App\Override\Gesdinet\JWTRefreshTokenBundle\Security\Provider\RefreshTokenProvider:
-        decorates: 'gesdinet.jwtrefreshtoken.user_provider'
-        arguments: [ '@gesdinet.jwtrefreshtoken.refresh_token_manager', '@App\Override\Gesdinet\JWTRefreshTokenBundle\Security\Provider\RefreshTokenProvider.inner', '@doctrine.orm.entity_manager' ]
+        calls:
+            - setDecorationInner: [ '@App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer.inner' ]
         autoconfigure: false
