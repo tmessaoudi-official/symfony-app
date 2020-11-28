@@ -2,28 +2,25 @@
 
 namespace App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Gesdinet\JWTRefreshTokenBundle\Entity\RefreshTokenRepository;
-use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManager as OriginalRefreshTokenManager;
-use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenInterface;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectRepository;
+use Gesdinet\JWTRefreshTokenBundle\Entity\RefreshTokenRepository;
+use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenInterface;
+use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManager as RefreshTokenManagerModel;
 
-class RefreshTokenManager extends OriginalRefreshTokenManager
+class RefreshTokenManager extends RefreshTokenManagerModel
 {
     protected EntityManagerInterface $objectManager;
 
     protected string $class;
 
-    protected RefreshTokenRepository $repository;
+    protected RefreshTokenRepository|ObjectRepository $repository;
 
     public function __construct(EntityManagerInterface $entityManager, string $gesdinetJWTRefreshTokenEntityClass)
     {
         $this->objectManager = $entityManager;
-        /**
-         * @var $repository RefreshTokenRepository
-         */
-        $repository = $entityManager->getRepository($gesdinetJWTRefreshTokenEntityClass);
-        $this->repository = $repository;
+        $this->repository = $entityManager->getRepository($gesdinetJWTRefreshTokenEntityClass);
         $this->class = $entityManager->getClassMetadata($gesdinetJWTRefreshTokenEntityClass)->getName();
     }
 
@@ -32,23 +29,15 @@ class RefreshTokenManager extends OriginalRefreshTokenManager
      */
     public function get($refreshToken): RefreshTokenInterface|null
     {
-        /**
-         * @var $data RefreshTokenInterface
-         */
-        $data = $this->repository->findOneBy(array('refreshToken' => $refreshToken));
-        return $data;
+        return $this->repository->findOneBy(array('refreshToken' => $refreshToken));
     }
 
     /**
      * @param string $username
      */
-    public function getLastFromUsername($username): RefreshTokenInterface
+    public function getLastFromUsername($username): RefreshTokenInterface|null
     {
-        /**
-         * @var $data RefreshTokenInterface
-         */
-        $data = $this->repository->findOneBy(array('username' => $username), array('valid' => 'DESC'));
-        return $data;
+        return $this->repository->findOneBy(array('username' => $username), array('valid' => 'DESC'));
     }
 
     public function save(RefreshTokenInterface $refreshToken, bool $andFlush = true): void
@@ -60,7 +49,7 @@ class RefreshTokenManager extends OriginalRefreshTokenManager
         }
     }
 
-    public function delete(RefreshTokenInterface $refreshToken, bool$andFlush = true): void
+    public function delete(RefreshTokenInterface $refreshToken, bool $andFlush = true): void
     {
         $this->objectManager->remove($refreshToken);
 
