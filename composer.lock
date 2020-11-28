@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7d7c5835a7339d5c70687e0241b6b65",
+    "content-hash": "b9c57d62c395cbd002a0410382ace0c6",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -12655,12 +12655,13 @@
         "dama/doctrine-test-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20
     },
-    "prefer-stable": true,
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-imagick": "*",
         "ext-json": "*"
     },
     "platform-dev": [],

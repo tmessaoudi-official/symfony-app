@@ -13,6 +13,7 @@
         "php": ">=8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-imagick": "*",
         "ext-json": "*",
         "api-platform/api-pack": "1.*",
         "api-platform/core": "2.6.x-dev",
