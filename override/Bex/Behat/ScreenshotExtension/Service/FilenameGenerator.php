@@ -29,7 +29,7 @@ class FilenameGenerator
         $feature = $this->relativizePaths($featureNode->getFile());
         $line = $scenarioNode->getLine();
         $fileName = join('_', [$feature, $line]);
-        return preg_replace('/[^A-Za-z0-9\-]/', '_', mb_strtolower($fileName)) . (new DateTime())->format('_Y_m_d_H_i_s') . '.png';
+        return preg_replace('/[^A-Za-z0-9\-\\\.]/', '_', $fileName) . (new DateTime())->format('--Y_m_d_H_i_s') . '.png';
     }
 
     /**
