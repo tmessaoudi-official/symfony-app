@@ -36,3 +36,7 @@ services:
     gesdinet.jwtrefreshtoken.refresh_token_manager:
         class: App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager
         public: true
+    App\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizerJWTDecorator:
+        decorates: 'api_platform.openapi.normalizer'
+        arguments: [ '@App\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizerJWTDecorator.inner' ]
+        autoconfigure: false
