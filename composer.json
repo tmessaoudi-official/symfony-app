@@ -92,7 +92,10 @@
         "psr-4": {
             "App\\Tests\\PhpUnit\\": "tests/src/PhpUnit/",
             "App\\Tests\\Behat\\": "tests/src/Behat/"
-        }
+        },
+        "files": [
+            "override/Bex/Behat/ScreenshotExtension/Service/FilenameGenerator.php"
+        ]
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
