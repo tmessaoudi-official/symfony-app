@@ -2,6 +2,12 @@
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Takieddine Message",
+            "email": "tmessaoudi@smart-team.tn"
+        }
+    ],
     "prefer-stable": true,
     "require": {
         "php": ">=8.0",
@@ -52,17 +58,23 @@
         "willdurand/negotiation": "3.*"
     },
     "require-dev": {
-        "symfony/debug-pack": "1.*",
-        "symfony/profiler-pack": "1.*",
-        "symfony/requirements-checker": "2.*",
-        "symfony/test-pack": "1.*",
-        "doctrine/doctrine-fixtures-bundle": "3.5.x-dev",
         "behat/behat": "^3.8",
+        "behat/debug-extension": "^1.0",
+        "behat/mink-goutte-driver": "1.2.x-dev",
+        "behat/mink-selenium2-driver": "1.4.x-dev",
+        "bex/behat-screenshot": "dev-master",
+        "dama/doctrine-test-bundle": "7.0.x-dev",
+        "doctrine/doctrine-fixtures-bundle": "3.5.x-dev",
         "friends-of-behat/mink": "^1.8",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-extension": "^2.4",
         "friends-of-behat/symfony-extension": "^2.1",
-        "friends-of-behat/test-context": "^1.2"
+        "friends-of-behat/test-context": "^1.2",
+        "sensiolabs/security-checker": "^6.0",
+        "symfony/debug-pack": "1.*",
+        "symfony/profiler-pack": "1.*",
+        "symfony/requirements-checker": "2.*",
+        "symfony/test-pack": "1.*"
     },
     "config": {
         "optimize-autoloader": true,
@@ -78,7 +90,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\PhpUnit\\": "tests/src/PhpUnit/",
+            "App\\Tests\\Behat\\": "tests/src/Behat/"
         }
     },
     "replace": {
@@ -90,7 +103,8 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "requirements-checker": "script"
+            "requirements-checker": "script",
+            "security-checker security:check": "script"
         },
         "post-install-cmd": [
             "@auto-scripts"

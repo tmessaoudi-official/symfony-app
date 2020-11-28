@@ -1,13 +1,10 @@
-#!/usr/bin/env php
-<?php
+#!/usr/bin/env sh
 
-if (!file_exists(dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit.php')) {
-    echo "Unable to find the `simple-phpunit.php` script in `vendor/symfony/phpunit-bridge/bin/`.\n";
-    exit(1);
-}
+dir=$(cd "${0%[/\\]*}" > /dev/null; cd "../vendor/symfony/phpunit-bridge/bin/" && pwd)
 
-if (false === getenv('SYMFONY_PHPUNIT_DIR')) {
-    putenv('SYMFONY_PHPUNIT_DIR='.__DIR__.'/.phpunit');
-}
+if [ -d /proc/cygdrive ] && [[ $(which php) == $(readlink -n /proc/cygdrive)/* ]]; then
+# We are in Cgywin using Windows php, so the path must be translated
+dir=$(cygpath -m "$dir");
+fi
 
-require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit.php';
+"${dir}/simple-phpunit" "$@"

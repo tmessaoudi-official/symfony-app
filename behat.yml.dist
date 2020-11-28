@@ -1,9 +1,28 @@
 default:
+    autoload:
+        - "%paths.base%"
+    formatters:
+        pretty:
+          verbose:  true
+          paths:    false
+          snippets: false
     suites:
         default:
+            paths:
+              features: tests/src/Behat/Suite/Demo/Feature
             contexts:
-                - App\Tests\Behat\DemoContext
-
+                - App\Tests\Behat\Suite\Dummy\Context\DemoContext
+                - App\Tests\Behat\Common\Context\ActionContext
+                - App\Tests\Behat\Common\Context\ScreenshotsContext
+                - App\Tests\Behat\Common\Context\FileDownloadContext
+                - Behat\MinkExtension\Context\MinkContext
     extensions:
+        Behat\MinkExtension:
+          sessions:
+            headless_browsers_session:
+              goutte: ~
         FriendsOfBehat\SymfonyExtension:
-            bootstrap: ~
+            bootstrap: tests/config/bootstrap.php
+            kernel:
+                environment: test
+                debug: true
