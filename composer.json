@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "api-platform/api-pack": "1.*",
+        "api-platform/core": "2.6.x-dev",
         "composer/package-versions-deprecated": "1.*",
         "doctrine/annotations": "1.12.x-dev",
         "doctrine/doctrine-bundle": "dev-master",
@@ -51,17 +52,17 @@
         "willdurand/negotiation": "3.*"
     },
     "require-dev": {
-        "behat/behat": "^3.8",
+        "symfony/debug-pack": "1.*",
+        "symfony/profiler-pack": "1.*",
+        "symfony/requirements-checker": "2.*",
+        "symfony/test-pack": "1.*",
         "doctrine/doctrine-fixtures-bundle": "3.5.x-dev",
+        "behat/behat": "^3.8",
         "friends-of-behat/mink": "^1.8",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-extension": "^2.4",
         "friends-of-behat/symfony-extension": "^2.1",
-        "friends-of-behat/test-context": "^1.2",
-        "symfony/debug-pack": "1.*",
-        "symfony/profiler-pack": "1.*",
-        "symfony/requirements-checker": "2.*",
-        "symfony/test-pack": "1.*"
+        "friends-of-behat/test-context": "^1.2"
     },
     "config": {
         "optimize-autoloader": true,
