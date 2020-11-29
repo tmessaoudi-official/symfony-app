@@ -1,25 +1,37 @@
 <?php
 
+/*
+ * Personal project using Php 8/Symfony 5.2.x@dev.
+ *
+ * @author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
+ * @organization : Smart Companion
+ * @contact      : takieddine.messaoudi.official@gmail.com
+ *
+ */
+
+declare(strict_types=1);
+
 namespace App\Override\Gesdinet\JWTRefreshTokenBundle\EventListener;
 
+use App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager;
 use App\Override\Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken;
+use DateTime;
+use Gesdinet\JWTRefreshTokenBundle\EventListener\AttachRefreshTokenOnSuccessListener as OriginalAttachRefreshTokenOnSuccessListener;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenInterface;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManagerInterface;
 use Gesdinet\JWTRefreshTokenBundle\Request\RequestRefreshToken;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
-use Gesdinet\JWTRefreshTokenBundle\EventListener\AttachRefreshTokenOnSuccessListener as OriginalAttachRefreshTokenOnSuccessListener;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use DateTime;
 
 class AttachRefreshTokenOnSuccessListener extends OriginalAttachRefreshTokenOnSuccessListener
 {
     protected OriginalAttachRefreshTokenOnSuccessListener $decorated;
 
     public function __construct(
-        RefreshTokenManagerInterface $refreshTokenManager,
+        RefreshTokenManagerInterface | RefreshTokenManager $refreshTokenManager,
         $ttl,
         ValidatorInterface $validator,
         RequestStack $requestStack,
@@ -33,6 +45,14 @@ class AttachRefreshTokenOnSuccessListener extends OriginalAttachRefreshTokenOnSu
     public function setDecorationInner(OriginalAttachRefreshTokenOnSuccessListener $decorated): void
     {
         $this->decorated = $decorated;
+    }
+
+    public function attachRefreshToken(AuthenticationSuccessEvent $event): void
+    {
+        $data = $this->generateRefreshToken($event);
+        if ($data) {
+            $event->setData($data);
+        }
     }
 
     protected function generateRefreshToken(AuthenticationSuccessEvent $event): ?array
@@ -62,6 +82,7 @@ class AttachRefreshTokenOnSuccessListener extends OriginalAttachRefreshTokenOnSu
             $datetime = new DateTime();
             $datetime->modify('+'.$this->ttl.' seconds');
 
+            $this->refreshTokenManager->deleteByUser($user, ['ip' => $request->getClientIp()]);
             /**
              * @var RefreshToken
              */
@@ -92,14 +113,7 @@ class AttachRefreshTokenOnSuccessListener extends OriginalAttachRefreshTokenOnSu
             $this->refreshTokenManager->save($refreshToken);
             $data[$this->tokenParameterName] = $refreshToken->getRefreshToken();
         }
-        return $data;
-    }
 
-    public function attachRefreshToken(AuthenticationSuccessEvent $event)
-    {
-        $data = $this->generateRefreshToken($event);
-        if ($data) {
-            $event->setData($data);
-        }
+        return $data;
     }
 }

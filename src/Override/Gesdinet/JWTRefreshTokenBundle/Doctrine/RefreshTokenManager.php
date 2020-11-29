@@ -20,6 +20,7 @@ use Doctrine\Persistence\ObjectRepository;
 use Gesdinet\JWTRefreshTokenBundle\Entity\RefreshTokenRepository;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenInterface;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManager as RefreshTokenManagerModel;
+use Symfony\Component\HttpFoundation\Request;
 
 class RefreshTokenManager extends RefreshTokenManagerModel
 {
@@ -91,9 +92,9 @@ class RefreshTokenManager extends RefreshTokenManagerModel
     /**
      * @return RefreshTokenInterface[]
      */
-    public function deleteByUser(User $user): array
+    public function deleteByUser(User $user, ?array $extraCriteria = null): array
     {
-        $userRefreshTokens = $this->repository->findBy(['username' => $user->getEmail()]);
+        $userRefreshTokens = $this->repository->findBy(['username' => $user->getEmail()] + $extraCriteria);
 
         foreach ($userRefreshTokens as $refreshToken) {
             $this->objectManager->remove($refreshToken);

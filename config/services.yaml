@@ -34,9 +34,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    gesdinet.jwtrefreshtoken.refresh_token_manager:
-        class: App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager
-        public: true
+    App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager:
+        decorates: 'gesdinet.jwtrefreshtoken.refresh_token_manager'
+        autoconfigure: false
     App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer:
         decorates: 'api_platform.openapi.normalizer'
         calls:
@@ -50,10 +50,13 @@ services:
         calls:
             - setDecorationInner: [ '@App\Override\Gesdinet\JWTRefreshTokenBundle\EventListener\AttachRefreshTokenOnSuccessListener.inner' ]
         autoconfigure: false
+    App\Override\Gesdinet\JWTRefreshTokenBundle\Service\RefreshToken:
+        decorates: 'gesdinet.jwtrefreshtoken'
+        arguments: [ "@gesdinet.jwtrefreshtoken.authenticator", "@gesdinet.jwtrefreshtoken.user_provider", "@lexik_jwt_authentication.handler.authentication_success", "@lexik_jwt_authentication.handler.authentication_failure", "@gesdinet.jwtrefreshtoken.refresh_token_manager", "%gesdinet_jwt_refresh_token.ttl%", "%gesdinet_jwt_refresh_token.security.firewall%", "%gesdinet_jwt_refresh_token.ttl_update%", "@event_dispatcher" ]
+        autoconfigure: false
     App\Kernel\EventListener\LexikJWTAuthentication\OnJWTCreated:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
-
     App\Kernel\EventListener\LexikJWTAuthentication\OnJWTDecoded:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_decoded, method: onJWTDecoded }

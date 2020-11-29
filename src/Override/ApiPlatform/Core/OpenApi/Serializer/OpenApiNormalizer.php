@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class OpenApiNormalizer implements NormalizerInterface
 {
-    private OriginalOpenApiNormalizer $decorated;
+    protected OriginalOpenApiNormalizer $decorated;
 
     public function setDecorationInner(OriginalOpenApiNormalizer $decorated): void
     {
