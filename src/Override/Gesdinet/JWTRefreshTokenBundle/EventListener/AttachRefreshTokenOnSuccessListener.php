@@ -95,6 +95,7 @@ class AttachRefreshTokenOnSuccessListener extends OriginalAttachRefreshTokenOnSu
             $refreshToken->setRefreshToken();
             $refreshToken->setValid($datetime);
             $refreshToken->setIp($request->getClientIp());
+            $refreshToken->setUserAgent($request->headers->get('user-agent'));
 
             $valid = false;
             while (false === $valid) {

@@ -99,7 +99,7 @@ class RefreshToken
         $credentials = $this->authenticator->getCredentials($request);
         $refreshToken = $this->refreshTokenManager->get($credentials['token']);
 
-        if (null === $refreshToken || !$refreshToken->isValid() || $refreshToken->getIp() !== $request->getClientIp() || empty($jwtToken)) {
+        if (null === $refreshToken || !$refreshToken->isValid() || $refreshToken->getIp() !== $request->getClientIp() || $refreshToken->getUserAgent() !== $request->headers->get('user-agent') || empty($jwtToken)) {
             return $this->failureHandler->onAuthenticationFailure(
                 $request,
                 new AuthenticationException(

@@ -52,6 +52,13 @@ class OnJWTDecoded
             return;
         }
 
+        if (!isset($payload['user-agent']) || $payload['user-agent'] !== $request->headers->get('user-agent')) {
+            $event->markAsInvalid();
+
+            return;
+        }
+
+
         $item = $this->cache->getItem($token);
         if ($item->isHit()) {
             $event->markAsInvalid();

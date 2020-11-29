@@ -31,6 +31,7 @@ class OnJWTCreated
 
         $payload = $event->getData();
         $payload['ip'] = $request->getClientIp();
+        $payload['user-agent'] = $request->headers->get('user-agent');
 
         $event->setData($payload);
 

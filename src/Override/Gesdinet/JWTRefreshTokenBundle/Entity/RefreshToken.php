@@ -43,4 +43,21 @@ class RefreshToken extends AbstractRefreshToken
 
         return $this;
     }
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected string $userAgent;
+
+    public function getUserAgent(): ?string
+    {
+        return $this->userAgent;
+    }
+
+    public function setUserAgent(string $userAgent): self
+    {
+        $this->userAgent = $userAgent;
+
+        return $this;
+    }
 }
