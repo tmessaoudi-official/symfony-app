@@ -1,16 +1,5 @@
 <?php
 
-/*
- * Personal project using Php 8/Symfony 5.2.x@dev.
- *
- * @author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
- * @organization : Smart Companion
- * @contact      : takieddine.messaoudi.official@gmail.com
- *
- */
-
-declare(strict_types=1);
-
 return [
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
@@ -31,4 +20,5 @@ return [
     FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true],
     DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class => ['test' => true],
     Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
+    Noxlogic\RateLimitBundle\NoxlogicRateLimitBundle::class => ['all' => true],
 ];

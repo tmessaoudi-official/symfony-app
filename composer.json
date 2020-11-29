@@ -28,7 +28,9 @@
         "gesdinet/jwt-refresh-token-bundle": "1.*",
         "lcobucci/jwt": "~3.2.5",
         "lexik/jwt-authentication-bundle": "2.*",
+        "noxlogic/ratelimit-bundle": "dev-master",
         "ramsey/uuid-doctrine": "1.*",
+        "sensio/framework-extra-bundle": "5.6.*",
         "spomky-labs/lexik-jose-bridge": "^3.0",
         "symfony/apache-pack": "^1.0",
         "symfony/cache": "5.2.*",
@@ -57,8 +59,7 @@
         "web-token/jwt-signature-algorithm-hmac": "^2.0",
         "web-token/jwt-signature-algorithm-none": "^2.0",
         "web-token/jwt-signature-algorithm-rsa": "^2.0",
-        "willdurand/negotiation": "3.*",
-        "sensio/framework-extra-bundle": "5.6.*"
+        "willdurand/negotiation": "3.*"
     },
     "require-dev": {
         "behat/behat": "^3.8",

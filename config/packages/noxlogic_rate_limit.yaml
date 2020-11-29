@@ -1,0 +1,6 @@
+noxlogic_rate_limit:
+  enabled                 : true
+  storage_engine          : cache
+  redis_client            : null
+  cache_service           : app_rate_limits
+  fos_oauth_key_listener  : true
