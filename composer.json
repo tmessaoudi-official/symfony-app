@@ -71,6 +71,7 @@
         "friends-of-behat/mink-extension": "^2.4",
         "friends-of-behat/symfony-extension": "^2.1",
         "friends-of-behat/test-context": "^1.2",
+        "friendsofphp/php-cs-fixer": "3.0.x-dev",
         "sensiolabs/security-checker": "^6.0",
         "symfony/debug-pack": "1.*",
         "symfony/profiler-pack": "1.*",
@@ -115,6 +116,17 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "schema:validate": "./bin/console doctrine:schema:validate --skip-sync",
+        "yaml:lint": "./bin/console lint:yaml config/ --ansi",
+        "twig:lint": "./bin/console lint:twig templates/ --ansi",
+        "cs:check": "./vendor/bin/php-cs-fixer fix --dry-run --ansi",
+        "cs:fix": "./vendor/bin/php-cs-fixer fix --ansi",
+        "check": [
+            "@schema:validate",
+            "@yaml:lint",
+            "@twig:lint",
+            "@cs:check"
         ]
     },
     "conflict": {

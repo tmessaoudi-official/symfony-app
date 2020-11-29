@@ -43,6 +43,12 @@
     "brick/math": {
         "version": "0.9.1"
     },
+    "composer/semver": {
+        "version": "3.x-dev"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.5"
+    },
     "dama/doctrine-test-bundle": {
         "version": "4.0",
         "recipe": {
@@ -182,6 +188,18 @@
     "friends-of-behat/test-context": {
         "version": "v1.2.0"
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cc05ab6abf6894bddb9bbd6a252459010ebe040b"
+        },
+        "files": [
+            ".php_cs.dist"
+        ]
+    },
     "gesdinet/jwt-refresh-token-bundle": {
         "version": "v0.9.1"
     },
@@ -244,6 +262,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.11.x-dev"
+    },
+    "php-cs-fixer/diff": {
+        "version": "v1.3.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.x-dev"
@@ -493,6 +514,9 @@
             "config/packages/test/monolog.yaml"
         ]
     },
+    "symfony/options-resolver": {
+        "version": "5.2.x-dev"
+    },
     "symfony/orm-pack": {
         "version": "dev-main"
     },
@@ -524,6 +548,9 @@
         "version": "1.21-dev"
     },
     "symfony/polyfill-php56": {
+        "version": "1.20-dev"
+    },
+    "symfony/polyfill-php70": {
         "version": "1.20-dev"
     },
     "symfony/polyfill-php73": {

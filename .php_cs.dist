@@ -1,0 +1,38 @@
+<?php declare(strict_types=1);
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
+    ->exclude('var')
+;
+
+$header = <<<HEADER
+Personal project using Php 8/Symfony 5.2.x@dev.
+
+@author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
+@organization : Smart Companion
+@contact      : takieddine.messaoudi.official@gmail.com
+
+HEADER;
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        '@PHPUnit75Migration:risky' => true,
+        'php_unit_dedicate_assert' => ['target' => '5.6'],
+        'array_syntax' => ['syntax' => 'short'],
+        'fopen_flags' => false,
+        'protected_to_private' => false,
+        'native_constant_invocation' => true,
+        'combine_nested_dirname' => true,
+        'list_syntax' => ['syntax' => 'short'],
+        'header_comment' => [
+            'header' => $header,
+            'separate' => 'both',
+            'location' => 'after_open'
+        ]
+    ])
+    ->setUsingCache(true)
+    ->setHideProgress(false)
+    ->setFinder($finder)
+;
