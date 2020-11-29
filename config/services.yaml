@@ -13,7 +13,7 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
-            $gesdinetJWTRefreshTokenEntityClass: 'Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken'
+            $gesdinetJWTRefreshTokenEntityClass: 'App\Override\Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken'
             $jWTTokenTTL: '%env(int:JWT_TOKEN_TTL)%'
 
     # makes classes in src/ available to be used as services
@@ -41,6 +41,14 @@ services:
         decorates: 'api_platform.openapi.normalizer'
         calls:
             - setDecorationInner: [ '@App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer.inner' ]
+        autoconfigure: false
+    App\Override\Gesdinet\JWTRefreshTokenBundle\EventListener\AttachRefreshTokenOnSuccessListener:
+        decorates: 'gesdinet.jwtrefreshtoken.send_token'
+        arguments: [ "@gesdinet.jwtrefreshtoken.refresh_token_manager", "%gesdinet_jwt_refresh_token.ttl%", "@validator", "@request_stack", "%gesdinet_jwt_refresh_token.user_identity_field%", "%gesdinet_jwt_refresh_token.token_parameter_name%", "%gesdinet_jwt_refresh_token.single_use%" ]
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: attachRefreshToken }
+        calls:
+            - setDecorationInner: [ '@App\Override\Gesdinet\JWTRefreshTokenBundle\EventListener\AttachRefreshTokenOnSuccessListener.inner' ]
         autoconfigure: false
     App\Kernel\EventListener\LexikJWTAuthentication\OnJWTCreated:
         tags:

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c055e6f572f16bfc21469ae3b65ac4f6",
+    "content-hash": "1b5ae998f000bf2cfe99f96bb76a39fc",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "f71b9e56e88c4e9c279aee8336b454b436f61a98"
+                "reference": "dd105c0fe4c06b7fa4636e420d2e414f8cdba3e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/f71b9e56e88c4e9c279aee8336b454b436f61a98",
-                "reference": "f71b9e56e88c4e9c279aee8336b454b436f61a98",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/dd105c0fe4c06b7fa4636e420d2e414f8cdba3e6",
+                "reference": "dd105c0fe4c06b7fa4636e420d2e414f8cdba3e6",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-28T17:17:28+00:00"
+            "time": "2020-11-29T13:58:27+00:00"
         },
         {
             "name": "brick/math",
@@ -1789,16 +1789,16 @@
         },
         {
             "name": "gesdinet/jwt-refresh-token-bundle",
-            "version": "v0.9.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/markitosgv/JWTRefreshTokenBundle.git",
-                "reference": "1f2729e45b5eb28d6461d94dadeb0211a96754e8"
+                "reference": "7b0ab6f3b9afa54e8ea9778220f44d2d3196067a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/1f2729e45b5eb28d6461d94dadeb0211a96754e8",
-                "reference": "1f2729e45b5eb28d6461d94dadeb0211a96754e8",
+                "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/7b0ab6f3b9afa54e8ea9778220f44d2d3196067a",
+                "reference": "7b0ab6f3b9afa54e8ea9778220f44d2d3196067a",
                 "shasum": ""
             },
             "require": {
@@ -1813,6 +1813,7 @@
                 "doctrine/orm": "^2.4.8",
                 "phpspec/phpspec": "^3.0|^4.0|^5.0|^6.0"
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1840,9 +1841,9 @@
             ],
             "support": {
                 "issues": "https://github.com/markitosgv/JWTRefreshTokenBundle/issues",
-                "source": "https://github.com/markitosgv/JWTRefreshTokenBundle/tree/v0.9.1"
+                "source": "https://github.com/markitosgv/JWTRefreshTokenBundle/tree/master"
             },
-            "time": "2020-02-04T16:08:46+00:00"
+            "time": "2020-06-18T12:08:35+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -13152,16 +13153,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "api-platform/core": 20,
-        "doctrine/annotations": 20,
-        "doctrine/doctrine-bundle": 20,
-        "doctrine/persistence": 20,
-        "behat/mink-goutte-driver": 20,
-        "behat/mink-selenium2-driver": 20,
-        "bex/behat-screenshot": 20,
-        "dama/doctrine-test-bundle": 20,
-        "doctrine/doctrine-fixtures-bundle": 20,
-        "friendsofphp/php-cs-fixer": 20
+        "bex/behat-screenshot": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
@@ -13170,7 +13162,8 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-imagick": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-openssl": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
