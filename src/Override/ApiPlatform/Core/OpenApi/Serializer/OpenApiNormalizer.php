@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * Personal project using Php 8/Symfony 5.2.x@dev.
+ *
+ * @author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
+ * @organization : Smart Companion
+ * @contact      : takieddine.messaoudi.official@gmail.com
+ *
+ */
+
 declare(strict_types=1);
 
 namespace App\Override\ApiPlatform\Core\OpenApi\Serializer;
@@ -12,7 +21,7 @@ final class OpenApiNormalizer implements NormalizerInterface
 {
     private OriginalOpenApiNormalizer $decorated;
 
-    public function setDecorationInner(OriginalOpenApiNormalizer $decorated)
+    public function setDecorationInner(OriginalOpenApiNormalizer $decorated): void
     {
         $this->decorated = $decorated;
     }

@@ -1,15 +1,26 @@
 <?php
 
+/*
+ * Personal project using Php 8/Symfony 5.2.x@dev.
+ *
+ * @author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
+ * @organization : Smart Companion
+ * @contact      : takieddine.messaoudi.official@gmail.com
+ *
+ */
+
+declare(strict_types=1);
+
 namespace App\Service\Api\Security\Auth;
 
 use App\Manager\Api\Security\Auth\LogoutManager;
+use DateInterval;
+use DateTime;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\JWTUserToken;
+use ReflectionClass;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Cache\CacheItem;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use DateTime;
-use DateInterval;
-use ReflectionClass;
 
 class LogoutService
 {
@@ -24,19 +35,19 @@ class LogoutService
         $this->jWTTokenTTL = $jWTTokenTTL;
     }
 
-    public function __invoke(TokenInterface|JWTUserToken $JWTUserToken)
+    public function __invoke(TokenInterface | JWTUserToken $JWTUserToken): void
     {
         $this->logoutManager->__invoke($JWTUserToken->getUser());
         /**
-         * @var $item CacheItem
+         * @var CacheItem $item
          */
-        $reflection = new ReflectionClass(get_class($JWTUserToken));
+        $reflection = new ReflectionClass(\get_class($JWTUserToken));
         $rawToken = $reflection->getProperty('rawToken');
         $rawToken->setAccessible(true);
         $token = $rawToken->getValue($JWTUserToken);
         $item = $this->cache->getItem($token);
         $expireAt = (new DateTime())->add(new DateInterval('PT'.$this->jWTTokenTTL.'S'));
-        $item->expiresAfter(intval($this->jWTTokenTTL));
+        $item->expiresAfter((int) ($this->jWTTokenTTL));
         $item->expiresAt($expireAt);
         $item->set([
             'token' => $token,

@@ -1,27 +1,38 @@
 <?php
 
+/*
+ * Personal project using Php 8/Symfony 5.2.x@dev.
+ *
+ * @author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
+ * @organization : Smart Companion
+ * @contact      : takieddine.messaoudi.official@gmail.com
+ *
+ */
+
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Behaviour\Arrays\Ops;
-use App\Repository\UserRepository;
 use App\Entity\Behaviour\Uuidable;
+use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Serializable;
 
 /**
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_ADMIN')"},
- *     normalizationContext={"groups"={"read", "uuid"}},
+ *     attributes={"security": "is_granted('ROLE_ADMIN')"},
+ *     normalizationContext={"groups": {"read", "uuid"}},
  *     collectionOperations={"get"},
  *     itemOperations={
  *         "get",
- *         "delete"={"security"="is_granted('ROLE_SUPER_ADMIN')", "security_message"="Only super admins can delete users."},
+ *         "delete": {"security": "is_granted('ROLE_SUPER_ADMIN')", "security_message": "Only super admins can delete users."},
  *     }
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -32,7 +43,7 @@ class User implements UserInterface, Serializable
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank
      *
      * @Groups({"read"})
      */
@@ -40,7 +51,7 @@ class User implements UserInterface, Serializable
 
     /**
      * @ORM\Column(type="string", unique=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank
      * @Assert\Length(min=2, max=50)
      *
      * @Groups({"read"})
@@ -49,7 +60,7 @@ class User implements UserInterface, Serializable
 
     /**
      * @ORM\Column(type="string", unique=true)
-     * @Assert\Email()
+     * @Assert\Email
      *
      * @Groups({"read"})
      */

@@ -1,39 +1,49 @@
 <?php
 
+/*
+ * Personal project using Php 8/Symfony 5.2.x@dev.
+ *
+ * @author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
+ * @organization : Smart Companion
+ * @contact      : takieddine.messaoudi.official@gmail.com
+ *
+ */
+
+declare(strict_types=1);
+
 namespace App\Tests\PhpUnit\Service\DemoService;
 
 use App\Service\DemoService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class OperationTest extends WebTestCase
+/**
+ * @internal
+ * @coversNothing
+ */
+final class OperationTest extends WebTestCase
 {
     protected ?DemoService $demoService;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         self::bootKernel();
     }
 
     /**
-     * @test
      * @dataProvider provider
      *
-     * @param string $operand
-     * @param float $x
-     * @param float $y
-     * @param float|null $expected
      * @param string $testName
      */
-    public function __invoke(string $operand, float $x, float $y, ?float $expected, $testName)
+    public function testInvoke(string $operand, float $x, float $y, ?float $expected, $testName): void
     {
-        echo PHP_EOL . "App\Service\DemoService->operation(string '$operand', float $x, float $y): ?float $expected => $testName --- $x $operand $y = $expected" . PHP_EOL;
+        echo \PHP_EOL."App\\Service\\DemoService->operation(string '{$operand}', float {$x}, float {$y}): ?float {$expected} => {$testName} --- {$x} {$operand} {$y} = {$expected}".\PHP_EOL;
         $this->demoService = self::$container->get(DemoService::class);
 
-        $this->assertEquals($expected, $this->demoService->operation($operand, $x, $y), $testName);
+        static::assertSame($expected, $this->demoService->operation($operand, $x, $y), $testName);
     }
 
     /**
-     * format operand, x, y, expected, testName
+     * format operand, x, y, expected, testName.
      */
     public function provider(): array
     {
