@@ -672,12 +672,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "ecadac4272e598bbb0a3c4946facc617035423e2"
+                "reference": "98233abd3730604620444b11a0746d669913b3dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/ecadac4272e598bbb0a3c4946facc617035423e2",
-                "reference": "ecadac4272e598bbb0a3c4946facc617035423e2",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/98233abd3730604620444b11a0746d669913b3dc",
+                "reference": "98233abd3730604620444b11a0746d669913b3dc",
                 "shasum": ""
             },
             "require": {
@@ -776,7 +776,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-28T21:28:28+00:00"
+            "time": "2020-11-29T01:41:16+00:00"
         },
         {
             "name": "doctrine/doctrine-bundle",
