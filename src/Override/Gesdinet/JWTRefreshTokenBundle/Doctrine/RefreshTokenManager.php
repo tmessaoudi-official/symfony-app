@@ -2,6 +2,7 @@
 
 namespace App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine;
 
+use App\Entity\User;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
@@ -74,6 +75,22 @@ class RefreshTokenManager extends RefreshTokenManagerModel
         }
 
         return $invalidTokens;
+    }
+
+    /**
+     * @return RefreshTokenInterface[]
+     */
+    public function deleteByUser(User $user): array
+    {
+        $userRefreshTokens = $this->repository->findBy(['username' => $user->getEmail()]);
+
+        foreach ($userRefreshTokens as $refreshToken) {
+            $this->objectManager->remove($refreshToken);
+        }
+
+        $this->objectManager->flush();
+
+        return $userRefreshTokens;
     }
 
     /**
