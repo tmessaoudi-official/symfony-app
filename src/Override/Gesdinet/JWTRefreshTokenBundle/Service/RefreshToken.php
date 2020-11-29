@@ -1,11 +1,24 @@
 <?php
 
+/*
+ * Personal project using Php 8/Symfony 5.2.x@dev.
+ *
+ * @author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
+ * @organization : Smart Companion
+ * @contact      : takieddine.messaoudi.official@gmail.com
+ *
+ */
+
+declare(strict_types=1);
+
 namespace App\Override\Gesdinet\JWTRefreshTokenBundle\Service;
 
 use App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager;
+use App\Service\Api\Security\Auth\LogoutService;
 use Gesdinet\JWTRefreshTokenBundle\Event\RefreshEvent;
 use Gesdinet\JWTRefreshTokenBundle\Security\Authenticator\RefreshTokenAuthenticator;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,71 +30,37 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerI
 
 class RefreshToken
 {
-    /**
-     * @var RefreshTokenAuthenticator
-     */
-    protected $authenticator;
+    protected RefreshTokenAuthenticator $authenticator;
 
-    /**
-     * @var RefreshTokenProvider
-     */
-    protected $provider;
+    protected RefreshTokenProvider $provider;
 
-    /**
-     * @var AuthenticationSuccessHandlerInterface
-     */
-    protected $successHandler;
+    protected AuthenticationSuccessHandlerInterface $successHandler;
 
-    /**
-     * @var AuthenticationFailureHandlerInterface
-     */
-    protected $failureHandler;
+    protected AuthenticationFailureHandlerInterface $failureHandler;
 
     protected RefreshTokenManagerInterface | RefreshTokenManager $refreshTokenManager;
 
-    /**
-     * @var int
-     */
-    protected $ttl;
+    protected int $ttl;
 
-    /**
-     * @var string
-     */
-    protected $providerKey;
+    protected string $providerKey;
 
-    /**
-     * @var bool
-     */
-    protected $ttlUpdate;
+    protected bool $ttlUpdate;
 
-    /**
-     * @var EventDispatcherInterface
-     */
-    protected $eventDispatcher;
+    protected EventDispatcherInterface $eventDispatcher;
 
-    /**
-     * RefreshToken constructor.
-     *
-     * @param RefreshTokenAuthenticator             $authenticator
-     * @param RefreshTokenProvider                  $provider
-     * @param AuthenticationSuccessHandlerInterface $successHandler
-     * @param AuthenticationFailureHandlerInterface $failureHandler
-     * @param RefreshTokenManagerInterface          $refreshTokenManager
-     * @param int                                   $ttl
-     * @param string                                $providerKey
-     * @param bool                                  $ttlUpdate
-     * @param EventDispatcherInterface              $eventDispatcher
-     */
+    protected LogoutService $logoutService;
+
     public function __construct(
         RefreshTokenAuthenticator $authenticator,
         RefreshTokenProvider $provider,
         AuthenticationSuccessHandlerInterface $successHandler,
         AuthenticationFailureHandlerInterface $failureHandler,
-        RefreshTokenManagerInterface $refreshTokenManager,
-        $ttl,
-        $providerKey,
-        $ttlUpdate,
-        EventDispatcherInterface $eventDispatcher
+        RefreshTokenManagerInterface | RefreshTokenManager $refreshTokenManager,
+        int $ttl,
+        string $providerKey,
+        bool $ttlUpdate,
+        EventDispatcherInterface $eventDispatcher,
+        LogoutService $logoutService
     ) {
         $this->authenticator = $authenticator;
         $this->provider = $provider;
@@ -92,19 +71,16 @@ class RefreshToken
         $this->providerKey = $providerKey;
         $this->ttlUpdate = $ttlUpdate;
         $this->eventDispatcher = $eventDispatcher;
+        $this->logoutService = $logoutService;
     }
 
     /**
      * Refresh token.
      *
-     * @param Request $request
-     *
-     * @return mixed
-     *
      * @throws InvalidArgumentException
      * @throws AuthenticationException
      */
-    public function refresh(Request $request)
+    public function refresh(Request $request): Response
     {
         try {
             $user = $this->authenticator->getUser(
@@ -116,11 +92,14 @@ class RefreshToken
         } catch (AuthenticationException $e) {
             return $this->failureHandler->onAuthenticationFailure($request, $e);
         }
-
+        $jwtToken = @json_decode($request->getContent(), true)['token'];
+        if (!$jwtToken) {
+            $jwtToken = $request->query->get('token');
+        }
         $credentials = $this->authenticator->getCredentials($request);
         $refreshToken = $this->refreshTokenManager->get($credentials['token']);
 
-        if (null === $refreshToken || !$refreshToken->isValid() || $refreshToken->getIp() !== $request->getClientIp()) {
+        if (null === $refreshToken || !$refreshToken->isValid() || $refreshToken->getIp() !== $request->getClientIp() || empty($jwtToken)) {
             return $this->failureHandler->onAuthenticationFailure(
                 $request,
                 new AuthenticationException(
@@ -128,6 +107,8 @@ class RefreshToken
                 )
             );
         }
+
+        $this->logoutService->blacklistToken($jwtToken);
 
         if ($this->ttlUpdate) {
             $expirationDate = new \DateTime();

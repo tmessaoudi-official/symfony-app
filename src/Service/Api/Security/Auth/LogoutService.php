@@ -38,13 +38,15 @@ class LogoutService
     public function __invoke(TokenInterface | JWTUserToken $JWTUserToken): void
     {
         $this->logoutManager->__invoke($JWTUserToken->getUser());
+
+        $this->blacklistToken($this->getTokenString($JWTUserToken));
+    }
+
+    public function blacklistToken(string $token): void
+    {
         /**
          * @var CacheItem $item
          */
-        $reflection = new ReflectionClass(\get_class($JWTUserToken));
-        $rawToken = $reflection->getProperty('rawToken');
-        $rawToken->setAccessible(true);
-        $token = $rawToken->getValue($JWTUserToken);
         $item = $this->cache->getItem($token);
         $expireAt = (new DateTime())->add(new DateInterval('PT'.$this->jWTTokenTTL.'S'));
         $item->expiresAfter((int) ($this->jWTTokenTTL));
@@ -56,5 +58,14 @@ class LogoutService
             'invalidatedAt' => (new DateTime())->getTimestamp(),
         ]);
         $this->cache->save($item);
+    }
+
+    protected function getTokenString(TokenInterface | JWTUserToken $JWTUserToken)
+    {
+        $reflection = new ReflectionClass(\get_class($JWTUserToken));
+        $rawToken = $reflection->getProperty('rawToken');
+        $rawToken->setAccessible(true);
+
+        return $rawToken->getValue($JWTUserToken);
     }
 }

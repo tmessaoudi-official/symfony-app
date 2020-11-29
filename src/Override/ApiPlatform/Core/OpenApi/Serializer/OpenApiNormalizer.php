@@ -66,15 +66,6 @@ final class OpenApiNormalizer implements NormalizerInterface
             ],
         ];
 
-        $docs['components']['schemas']['RefreshToken'] = [
-            'type' => 'object',
-            'properties' => [
-                'refresh_token' => [
-                    'type' => 'string',
-                ],
-            ],
-        ];
-
         $docs['paths']['/api/auth/login'] = [
             'post' => [
                 'tags' => ['Token'],
@@ -115,7 +106,7 @@ final class OpenApiNormalizer implements NormalizerInterface
                     'content' => [
                         'application/json' => [
                             'schema' => [
-                                '$ref' => '#/components/schemas/RefreshToken',
+                                '$ref' => '#/components/schemas/Token',
                             ],
                         ],
                     ],

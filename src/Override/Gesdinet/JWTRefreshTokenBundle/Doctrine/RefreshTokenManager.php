@@ -20,7 +20,6 @@ use Doctrine\Persistence\ObjectRepository;
 use Gesdinet\JWTRefreshTokenBundle\Entity\RefreshTokenRepository;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenInterface;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManager as RefreshTokenManagerModel;
-use Symfony\Component\HttpFoundation\Request;
 
 class RefreshTokenManager extends RefreshTokenManagerModel
 {

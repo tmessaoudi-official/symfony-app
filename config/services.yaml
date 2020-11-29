@@ -52,7 +52,7 @@ services:
         autoconfigure: false
     App\Override\Gesdinet\JWTRefreshTokenBundle\Service\RefreshToken:
         decorates: 'gesdinet.jwtrefreshtoken'
-        arguments: [ "@gesdinet.jwtrefreshtoken.authenticator", "@gesdinet.jwtrefreshtoken.user_provider", "@lexik_jwt_authentication.handler.authentication_success", "@lexik_jwt_authentication.handler.authentication_failure", "@gesdinet.jwtrefreshtoken.refresh_token_manager", "%gesdinet_jwt_refresh_token.ttl%", "%gesdinet_jwt_refresh_token.security.firewall%", "%gesdinet_jwt_refresh_token.ttl_update%", "@event_dispatcher" ]
+        arguments: [ "@gesdinet.jwtrefreshtoken.authenticator", "@gesdinet.jwtrefreshtoken.user_provider", "@lexik_jwt_authentication.handler.authentication_success", "@lexik_jwt_authentication.handler.authentication_failure", "@gesdinet.jwtrefreshtoken.refresh_token_manager", "%gesdinet_jwt_refresh_token.ttl%", "%gesdinet_jwt_refresh_token.security.firewall%", "%gesdinet_jwt_refresh_token.ttl_update%", "@event_dispatcher", '@App\Service\Api\Security\Auth\LogoutService' ]
         autoconfigure: false
     App\Kernel\EventListener\LexikJWTAuthentication\OnJWTCreated:
         tags:
