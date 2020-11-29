@@ -57,7 +57,8 @@
         "web-token/jwt-signature-algorithm-hmac": "^2.0",
         "web-token/jwt-signature-algorithm-none": "^2.0",
         "web-token/jwt-signature-algorithm-rsa": "^2.0",
-        "willdurand/negotiation": "3.*"
+        "willdurand/negotiation": "3.*",
+        "sensio/framework-extra-bundle": "5.6.*"
     },
     "require-dev": {
         "behat/behat": "^3.8",

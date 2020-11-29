@@ -23,3 +23,5 @@ framework:
         pools:
             app_invalided_tokens:
                 adapter: cache.adapter.filesystem
+            app_rate_limits:
+                adapter: cache.adapter.filesystem
