@@ -15,6 +15,8 @@ namespace App\Tests\PhpUnit\Service\DemoService;
 
 use App\Service\DemoService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use const PHP_EOL;
+use DivisionByZeroError;
 
 /**
  * @internal
@@ -22,7 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 final class OperationTest extends WebTestCase
 {
-    protected ?DemoService $demoService;
+    protected DemoService | null $demoService;
 
     protected function setUp(): void
     {
@@ -31,19 +33,20 @@ final class OperationTest extends WebTestCase
 
     /**
      * @dataProvider provider
-     *
-     * @param string $testName
      */
-    public function testInvoke(string $operand, float $x, float $y, ?float $expected, $testName): void
+    public function testInvoke(string $operand, float $x, float $y, float | null $expected, string $testName, array | null $options = []): void
     {
-        echo \PHP_EOL."App\\Service\\DemoService->operation(string '{$operand}', float {$x}, float {$y}): ?float {$expected} => {$testName} --- {$x} {$operand} {$y} = {$expected}".\PHP_EOL;
+        echo PHP_EOL. DemoService::class . "->operation(string '{$operand}', float {$x}, float {$y}): ?float {$expected} => {$testName} --- {$x} {$operand} {$y} = {$expected}".PHP_EOL;
         $this->demoService = self::$container->get(DemoService::class);
 
+        if (@$options['exception']) {
+            static::expectException($options['exception']);
+        }
         static::assertSame($expected, $this->demoService->operation($operand, $x, $y), $testName);
     }
 
     /**
-     * format operand, x, y, expected, testName.
+     * format string 'operand', float x, float y, float expected, string 'testName'.
      */
     public function provider(): array
     {
@@ -52,7 +55,9 @@ final class OperationTest extends WebTestCase
             ['-', 1, 2, -1, 'Simple substraction'],
             ['*', 1, 2, 2, 'Simple multiplication'],
             ['/', 1, 2, 0.5, 'Simple division /'],
+            ['/', 1, 0, null, 'Simple division / by zero', ['exception' => DivisionByZeroError::class]],
             ['%', 1, 2, 1, 'Simple division %'],
+            ['%', 1, 0, null, 'Simple division % by zero', ['exception' => DivisionByZeroError::class]],
         ];
     }
 }

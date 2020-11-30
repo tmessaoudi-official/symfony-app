@@ -378,19 +378,19 @@
         ]
     },
     "symfony/asset": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/browser-kit": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/cache": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/cache-contracts": {
         "version": "2.3-dev"
     },
     "symfony/config": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/console": {
         "version": "5.1",
@@ -405,7 +405,7 @@
         ]
     },
     "symfony/css-selector": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/debug-bundle": {
         "version": "4.1",
@@ -423,37 +423,37 @@
         "version": "v1.0.9"
     },
     "symfony/dependency-injection": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/deprecation-contracts": {
         "version": "2.3-dev"
     },
     "symfony/doctrine-bridge": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/dom-crawler": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/dotenv": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/error-handler": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/event-dispatcher": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/event-dispatcher-contracts": {
         "version": "2.3-dev"
     },
     "symfony/expression-language": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/filesystem": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/finder": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/flex": {
         "version": "1.0",
@@ -488,16 +488,16 @@
         ]
     },
     "symfony/http-client": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/http-client-contracts": {
         "version": "2.3-dev"
     },
     "symfony/http-foundation": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/http-kernel": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/maker-bundle": {
         "version": "1.0",
@@ -509,10 +509,10 @@
         }
     },
     "symfony/mime": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/monolog-bridge": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/monolog-bundle": {
         "version": "3.3",
@@ -530,7 +530,7 @@
         ]
     },
     "symfony/options-resolver": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/orm-pack": {
         "version": "dev-main"
@@ -575,19 +575,19 @@
         "version": "1.21-dev"
     },
     "symfony/process": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/profiler-pack": {
         "version": "v1.0.5"
     },
     "symfony/property-access": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/property-info": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/proxy-manager-bridge": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/requirements-checker": {
         "version": "2.0",
@@ -625,19 +625,19 @@
         ]
     },
     "symfony/security-core": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/security-csrf": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/security-guard": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/security-http": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/serializer": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/serializer-pack": {
         "version": "v1.0.4"
@@ -646,10 +646,10 @@
         "version": "2.3-dev"
     },
     "symfony/stopwatch": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/string": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/test-pack": {
         "version": "v1.0.7"
@@ -671,7 +671,7 @@
         "version": "2.3-dev"
     },
     "symfony/twig-bridge": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/twig-bundle": {
         "version": "5.0",
@@ -701,13 +701,13 @@
         ]
     },
     "symfony/var-dumper": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/var-exporter": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/web-link": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "symfony/web-profiler-bundle": {
         "version": "3.3",
@@ -724,7 +724,7 @@
         ]
     },
     "symfony/yaml": {
-        "version": "5.2.x-dev"
+        "version": "5.x-dev"
     },
     "thecodingmachine/safe": {
         "version": "v1.3.3"

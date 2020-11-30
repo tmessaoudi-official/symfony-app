@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use DivisionByZeroError;
+
 class DemoService
 {
     public function operation(string $operand, float $x, float $y): ?float
@@ -20,29 +22,16 @@ class DemoService
         switch ($operand) {
             case '+':
                 return $x + $y;
-
-                break;
-
             case '-':
                 return $x - $y;
-
-                break;
-
             case '*':
                 return $x * $y;
-
-                break;
-
             case '/':
-                return $x / $y;
-
-                break;
-
             case '%':
-                return $x % $y;
-
-                break;
-
+                if ($y === 0) {
+                    throw new DivisionByZeroError();
+                }
+                return ($operand === '/' ? $x / $y : $x % $y);
             default:
                 return null;
         }
