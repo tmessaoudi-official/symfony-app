@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Behat\Common\Context;
 
-use App\Tests\Behat\Common\Helper\FileDownloadHelper;
+use App\Tests\Behat\Common\Helper\FileDownload as Helper;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Mink\Exception\ElementNotFoundException;
 use Exception;
@@ -42,7 +42,7 @@ class FileDownload extends Base implements SnippetAcceptingContext
      */
     public function iShouldDownloadFile(string $type, string $selector, string $expected, string $clearBefore = 'true', string $clearAfter = 'true', string $waitFor = '10'): void
     {
-        FileDownloadHelper::clearDownloads('true' === $clearBefore, $this->downloadFolder);
+        Helper::clearDownloads('true' === $clearBefore, $this->downloadFolder);
 
         $session = $this->getSession();
         $page = $session->getPage();
