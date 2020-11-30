@@ -21,7 +21,7 @@
     </php>
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>tests/src/PhpUnit</directory>
+            <directory>tests/PhpUnit</directory>
         </testsuite>
     </testsuites>
     <listeners>

@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\PhpUnit\Service\DemoService;
+namespace App\Tests\PhpUnit\Src\Service\DemoService;
 
 use App\Service\DemoService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

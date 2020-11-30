@@ -9,7 +9,7 @@ default:
     suites:
         demo:
             paths:
-              features: tests/src/Behat/Suite/Demo/Feature
+              features: tests/Behat/Suite/Demo/Feature
             contexts:
                 - App\Tests\Behat\Suite\Demo\Context\Index
                 - App\Tests\Behat\Common\Context\Action

@@ -6,6 +6,6 @@ services:
             $basePath: '%kernel.project_dir%'
 
     App\Tests\Behat\:
-        resource: '../../../tests/src/Behat/*'
+        resource: '../../../tests/Behat/*'
     bex.screenshot_extension.filename_generator:
         class: Bex\Behat\ScreenshotExtension\Service\FilenameGenerator
