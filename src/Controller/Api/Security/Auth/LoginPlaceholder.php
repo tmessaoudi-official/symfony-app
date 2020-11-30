@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/auth/login', name: 'api_security_auth_login', methods: ['GET', 'POST'])]
+#[Route('/auth/login', name: 'security_auth_login', methods: ['GET', 'POST'])]
 class LoginPlaceholder
 {
     public function __invoke(): JsonResponse

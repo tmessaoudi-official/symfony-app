@@ -28,7 +28,24 @@ if ($input->hasParameterOption('--no-debug', true)) {
     putenv('APP_DEBUG='.$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = '0');
 }
 
-(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+$dotEnv = new Dotenv();
+$dotEnv->usePutenv(true);
+$dotEnv->bootEnv(__DIR__.'/../.env');
+
+try {
+    $dotEnv->bootEnv(__DIR__.'/../.env.local');
+} catch (Exception $exception) {
+}
+
+try {
+    $dotEnv->bootEnv(__DIR__.'/../.env.'.$_ENV['APP_ENV']);
+} catch (Exception $exception) {
+}
+
+try {
+    $dotEnv->bootEnv(__DIR__.'/../.env.'.$_ENV['APP_ENV'].'.local');
+} catch (Exception $exception) {
+}
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
