@@ -2,10 +2,12 @@
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",
+    "homepage": "https://github.com/tmessaoudi-official",
     "authors": [
         {
-            "name": "Takieddine Message",
-            "email": "tmessaoudi@smart-team.tn"
+            "name": "Takieddine Messaoudi",
+            "email": "tmessaoudi@smart-team.tn",
+            "homepage": "https://github.com/tmessaoudi-official"
         }
     ],
     "prefer-stable": false,
