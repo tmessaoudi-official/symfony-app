@@ -91,9 +91,9 @@ class RefreshTokenManager extends RefreshTokenManagerModel
     /**
      * @return RefreshTokenInterface[]
      */
-    public function deleteByUser(User $user, ?array $extraCriteria = null): array
+    public function deleteBy(?array $extraCriteria = null): array
     {
-        $userRefreshTokens = $this->repository->findBy(['username' => $user->getEmail()] + $extraCriteria);
+        $userRefreshTokens = $this->repository->findBy($extraCriteria);
 
         foreach ($userRefreshTokens as $refreshToken) {
             $this->objectManager->remove($refreshToken);

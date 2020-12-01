@@ -33,6 +33,6 @@ class LogoutManager
     {
         //$this->refreshTokenManager->revokeAllInvalid();
         //$this->refreshTokenManager->delete($this->refreshTokenManager->getLastFromUsername($user->getEmail()));
-        $this->refreshTokenManager->deleteByUser($user, ['ip' => $this->requestStack->getCurrentRequest()->getClientIp()]);
+        $this->refreshTokenManager->deleteBy(['username' => $user->getEmail(), 'ip' => $this->requestStack->getCurrentRequest()->getClientIp()]);
     }
 }

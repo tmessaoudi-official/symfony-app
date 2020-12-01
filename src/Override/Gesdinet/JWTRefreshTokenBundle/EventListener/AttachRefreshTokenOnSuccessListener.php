@@ -82,7 +82,7 @@ class AttachRefreshTokenOnSuccessListener extends OriginalAttachRefreshTokenOnSu
             $datetime = new DateTime();
             $datetime->modify('+'.$this->ttl.' seconds');
 
-            $this->refreshTokenManager->deleteByUser($user, ['ip' => $request->getClientIp()]);
+            $this->refreshTokenManager->deleteBy(['username' => $user->getEmail(), 'ip' => $request->getClientIp()]);
             /**
              * @var RefreshToken
              */

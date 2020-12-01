@@ -124,7 +124,7 @@ class RefreshToken
             $this->eventDispatcher->dispatch('gesdinet.refresh_token', new RefreshEvent($refreshToken, $postAuthenticationToken));
         }
 
-        $this->refreshTokenManager->deleteByUser($user, ['ip' => $request->getClientIp()]);
+        $this->refreshTokenManager->deleteBy(['username' => $user->getEmail(), 'ip' => $request->getClientIp()]);
 
         return $this->successHandler->onAuthenticationSuccess($request, $postAuthenticationToken);
     }

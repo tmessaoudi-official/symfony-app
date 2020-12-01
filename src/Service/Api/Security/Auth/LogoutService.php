@@ -21,6 +21,7 @@ use ReflectionClass;
 use Symfony\Component\Cache\CacheItem;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Contracts\Cache\CacheInterface;
+use function get_class;
 
 class LogoutService
 {
@@ -48,13 +49,13 @@ class LogoutService
          * @var CacheItem $item
          */
         $item = $this->appInvalidedTokens->getItem($token);
-        $expireAt = (new DateTime())->add(new DateInterval('PT'.$this->jWTTokenTTL.'S'));
+        $expiresAt = (new DateTime())->add(new DateInterval('PT'.$this->jWTTokenTTL.'S'));
         $item->expiresAfter((int) ($this->jWTTokenTTL));
-        $item->expiresAt($expireAt);
+        $item->expiresAt($expiresAt);
         $item->set([
             'token' => $token,
             'expiresAfter' => $this->jWTTokenTTL,
-            'expiresAt' => $expireAt->getTimestamp(),
+            'expiresAt' => $expiresAt->getTimestamp(),
             'invalidatedAt' => (new DateTime())->getTimestamp(),
         ]);
         $this->appInvalidedTokens->save($item);
@@ -62,7 +63,7 @@ class LogoutService
 
     protected function getTokenString(TokenInterface | JWTUserToken $JWTUserToken)
     {
-        $reflection = new ReflectionClass(\get_class($JWTUserToken));
+        $reflection = new ReflectionClass(get_class($JWTUserToken));
         $rawToken = $reflection->getProperty('rawToken');
         $rawToken->setAccessible(true);
 

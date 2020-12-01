@@ -14,18 +14,25 @@ declare(strict_types=1);
 namespace App\Kernel\EventListener\LexikJWTAuthentication;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTDecodedEvent;
-use Symfony\Component\Cache\Adapter\AdapterInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\ChainTokenExtractor;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Contracts\Cache\CacheInterface;
 
 class OnJWTDecoded
 {
     protected RequestStack $requestStack;
-    protected AdapterInterface $cache;
+    protected CacheInterface $appInvalidedTokens;
+    protected ChainTokenExtractor $chainTokenExtractor;
 
-    public function __construct(RequestStack $requestStack, AdapterInterface $cache)
+    public function __construct(RequestStack $requestStack, CacheInterface $appInvalidedTokens)
     {
         $this->requestStack = $requestStack;
-        $this->cache = $cache;
+        $this->appInvalidedTokens = $appInvalidedTokens;
+    }
+
+    public function setChainTokenExtractor(ChainTokenExtractor $chainTokenExtractor)
+    {
+        $this->chainTokenExtractor = $chainTokenExtractor;
     }
 
     public function onJWTDecoded(JWTDecodedEvent $event): void
@@ -34,11 +41,7 @@ class OnJWTDecoded
 
         $request = $this->requestStack->getCurrentRequest();
 
-        $token = preg_replace('/^Bearer /', '', $request->headers->get('authorization'));
-
-        if (empty(($token))) {
-            $token = $request->query->get('token');
-        }
+        $token = $this->chainTokenExtractor->extract($request);
 
         if (empty($token)) {
             $event->markAsInvalid();
@@ -58,8 +61,7 @@ class OnJWTDecoded
             return;
         }
 
-
-        $item = $this->cache->getItem($token);
+        $item = $this->appInvalidedTokens->getItem($token);
         if ($item->isHit()) {
             $event->markAsInvalid();
         }
