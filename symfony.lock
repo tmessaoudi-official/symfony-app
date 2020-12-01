@@ -481,6 +481,9 @@
     "symfony/http-kernel": {
         "version": "5.x-dev"
     },
+    "symfony/lock": {
+        "version": "5.x-dev"
+    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -572,6 +575,9 @@
         "version": "5.x-dev"
     },
     "symfony/proxy-manager-bridge": {
+        "version": "5.x-dev"
+    },
+    "symfony/rate-limiter": {
         "version": "5.x-dev"
     },
     "symfony/requirements-checker": {
