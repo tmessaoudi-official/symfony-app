@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "d674766fefa5f4d295bd0c6e24f34ed07d683db7"
+                "reference": "c71591834c46d0e35408430059242d44d5698c9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/d674766fefa5f4d295bd0c6e24f34ed07d683db7",
-                "reference": "d674766fefa5f4d295bd0c6e24f34ed07d683db7",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/c71591834c46d0e35408430059242d44d5698c9f",
+                "reference": "c71591834c46d0e35408430059242d44d5698c9f",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-30T23:21:05+00:00"
+            "time": "2020-12-01T11:26:14+00:00"
         },
         {
             "name": "brick/math",
@@ -977,12 +977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/event-manager.git",
-                "reference": "348f72ec92c7e0b1f5462f6616af2b448ba3cbb1"
+                "reference": "232e06a7b03ad387ddd2f64a3deb59c48adb49f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/348f72ec92c7e0b1f5462f6616af2b448ba3cbb1",
-                "reference": "348f72ec92c7e0b1f5462f6616af2b448ba3cbb1",
+                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/232e06a7b03ad387ddd2f64a3deb59c48adb49f4",
+                "reference": "232e06a7b03ad387ddd2f64a3deb59c48adb49f4",
                 "shasum": ""
             },
             "require": {
@@ -1064,7 +1064,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-05T12:08:55+00:00"
+            "time": "2020-12-01T20:41:27+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1600,12 +1600,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/sql-formatter.git",
-                "reference": "a732f3ed008574c01f7d04cd58f96e2b32d4d055"
+                "reference": "844c48691575f161f54472fd6e65da96d1da95b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/sql-formatter/zipball/a732f3ed008574c01f7d04cd58f96e2b32d4d055",
-                "reference": "a732f3ed008574c01f7d04cd58f96e2b32d4d055",
+                "url": "https://api.github.com/repos/doctrine/sql-formatter/zipball/844c48691575f161f54472fd6e65da96d1da95b9",
+                "reference": "844c48691575f161f54472fd6e65da96d1da95b9",
                 "shasum": ""
             },
             "require": {
@@ -1649,7 +1649,7 @@
                 "issues": "https://github.com/doctrine/sql-formatter/issues",
                 "source": "https://github.com/doctrine/sql-formatter/tree/master"
             },
-            "time": "2020-05-30T07:40:09+00:00"
+            "time": "2020-12-01T18:45:50+00:00"
         },
         {
             "name": "fgrosse/phpasn1",
@@ -11456,12 +11456,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "2f097055e78076130a3cf8a82bbc2edd059a4ebd"
+                "reference": "223d0c297deb4f49d912be37cf1321f9aa735144"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/2f097055e78076130a3cf8a82bbc2edd059a4ebd",
-                "reference": "2f097055e78076130a3cf8a82bbc2edd059a4ebd",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/223d0c297deb4f49d912be37cf1321f9aa735144",
+                "reference": "223d0c297deb4f49d912be37cf1321f9aa735144",
                 "shasum": ""
             },
             "require": {
@@ -11492,6 +11492,7 @@
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.2",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.2.1",
                 "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.1",
+                "phpunitgoodpractices/polyfill": "^1.5",
                 "phpunitgoodpractices/traits": "^1.9.1",
                 "symfony/phpunit-bridge": "^5.1",
                 "symfony/yaml": "^3.0 || ^4.0 || ^5.0"
@@ -11549,7 +11550,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-30T13:42:35+00:00"
+            "time": "2020-12-01T20:31:32+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

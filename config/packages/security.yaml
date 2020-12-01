@@ -22,8 +22,6 @@ security:
             pattern: ^/api/auth/login
             stateless: true
             provider: app_entity_user_provider
-            login_throttling:
-                max_attempts: 3
             json_login:
                 check_path:      /api/auth/login
                 username_path:   username
