@@ -14,21 +14,23 @@ declare(strict_types=1);
 namespace App\Entity\Behaviour;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\IdGenerator\UuidV4Generator;
+use Symfony\Component\Uid\UuidV4;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 trait Uuidable
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="uuid", unique=true, nullable=false)
+     * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+     * @ORM\CustomIdGenerator(class=UuidV4Generator::class)
      *
      * @Groups({"uuid"})
      */
-    protected ?\Ramsey\Uuid\UuidInterface $id;
+    protected ?UuidV4 $id;
 
-    public function getId(): ?\Ramsey\Uuid\UuidInterface
+    public function getId(): ?UuidV4
     {
         return $this->id;
     }
