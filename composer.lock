@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "c86bb1d93ac24b25d56bc73a94f36ae423011c3b"
+                "reference": "d674766fefa5f4d295bd0c6e24f34ed07d683db7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/c86bb1d93ac24b25d56bc73a94f36ae423011c3b",
-                "reference": "c86bb1d93ac24b25d56bc73a94f36ae423011c3b",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/d674766fefa5f4d295bd0c6e24f34ed07d683db7",
+                "reference": "d674766fefa5f4d295bd0c6e24f34ed07d683db7",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-30T17:30:03+00:00"
+            "time": "2020-11-30T23:21:05+00:00"
         },
         {
             "name": "brick/math",
@@ -6607,12 +6607,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-core.git",
-                "reference": "b13a8f90de288c2f263847bc39cf33dee70996d9"
+                "reference": "030d56f6b70c4532ebdd8add29f54b8b8f10070f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-core/zipball/b13a8f90de288c2f263847bc39cf33dee70996d9",
-                "reference": "b13a8f90de288c2f263847bc39cf33dee70996d9",
+                "url": "https://api.github.com/repos/symfony/security-core/zipball/030d56f6b70c4532ebdd8add29f54b8b8f10070f",
+                "reference": "030d56f6b70c4532ebdd8add29f54b8b8f10070f",
                 "shasum": ""
             },
             "require": {
@@ -6673,7 +6673,7 @@
             "description": "Symfony Security Component - Core Library",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/security-core/tree/v5.2.0"
+                "source": "https://github.com/symfony/security-core/tree/5.x"
             },
             "funding": [
                 {
@@ -6689,7 +6689,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-28T11:24:18+00:00"
+            "time": "2020-11-30T22:47:11+00:00"
         },
         {
             "name": "symfony/security-csrf",
