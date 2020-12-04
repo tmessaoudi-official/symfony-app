@@ -19,7 +19,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
-#[Route('/auth/logout', name: 'security_auth_logout', methods: ['POST'])]
+#[
+    Route(
+        path: '/auth/logout',
+        name: 'security_auth_logout',
+        methods: ['POST']
+    )
+]
 class Logout
 {
     public function __invoke(Security $security, LogoutService $logoutService): JsonResponse

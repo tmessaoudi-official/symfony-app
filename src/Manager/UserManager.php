@@ -20,12 +20,10 @@ use Doctrine\Persistence\ObjectRepository;
 
 class UserManager
 {
-    protected EntityManagerInterface $entityManager;
     protected UserRepository|ObjectRepository $repository;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(protected EntityManagerInterface $entityManager)
     {
-        $this->entityManager = $entityManager;
         $this->repository = $this->entityManager->getRepository(User::class);
     }
 }

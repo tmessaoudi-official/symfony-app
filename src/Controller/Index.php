@@ -17,7 +17,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route(name: 'index', methods: ['GET'])]
+#[
+    Route(
+        path: '',
+        name: 'index',
+        methods: ['GET']
+    )
+]
 class Index extends AbstractController
 {
     public function __invoke(): Response

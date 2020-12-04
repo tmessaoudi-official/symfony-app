@@ -19,17 +19,9 @@ use DateTime;
 
 class FilenameGenerator
 {
-    protected string $basePath;
+    public function __construct(protected string $basePath) {}
 
-    public function __construct(string $basePath)
-    {
-        $this->basePath = $basePath;
-    }
-
-    /**
-     * @return string
-     */
-    public function generateFileName(FeatureNode $featureNode, ScenarioInterface $scenarioNode)
+    public function generateFileName(FeatureNode $featureNode, ScenarioInterface $scenarioNode): string
     {
         $feature = $this->relativizePaths($featureNode->getFile());
         $line = $scenarioNode->getLine();
@@ -41,9 +33,8 @@ class FilenameGenerator
     /**
      * Transforms path to relative.
      *
-     * @return string
      */
-    protected function relativizePaths(string $path)
+    protected function relativizePaths(string $path): string
     {
         if (!$this->basePath) {
             return $path;
