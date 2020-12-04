@@ -16,6 +16,7 @@ namespace Bex\Behat\ScreenshotExtension\Service;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\ScenarioInterface;
 use DateTime;
+use const DIRECTORY_SEPARATOR;
 
 class FilenameGenerator
 {
@@ -32,7 +33,6 @@ class FilenameGenerator
 
     /**
      * Transforms path to relative.
-     *
      */
     protected function relativizePaths(string $path): string
     {
@@ -40,6 +40,6 @@ class FilenameGenerator
             return $path;
         }
 
-        return str_replace($this->basePath.\DIRECTORY_SEPARATOR, '', $path);
+        return str_replace($this->basePath.DIRECTORY_SEPARATOR, '', $path);
     }
 }
