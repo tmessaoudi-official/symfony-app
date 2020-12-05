@@ -21,7 +21,6 @@ use ReflectionClass;
 use Symfony\Component\Cache\CacheItem;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Contracts\Cache\CacheInterface;
-use function get_class;
 
 class LogoutService
 {
@@ -63,7 +62,7 @@ class LogoutService
 
     protected function getTokenString(TokenInterface | JWTUserToken $JWTUserToken)
     {
-        $reflection = new ReflectionClass(get_class($JWTUserToken));
+        $reflection = new ReflectionClass(\get_class($JWTUserToken));
         $rawToken = $reflection->getProperty('rawToken');
         $rawToken->setAccessible(true);
 

@@ -32,6 +32,11 @@ class RefreshToken extends AbstractRefreshToken
      */
     protected string $ip;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected string $userAgent;
+
     public function getIp(): ?string
     {
         return $this->ip;
@@ -43,11 +48,6 @@ class RefreshToken extends AbstractRefreshToken
 
         return $this;
     }
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected string $userAgent;
 
     public function getUserAgent(): ?string
     {

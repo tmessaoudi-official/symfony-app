@@ -23,8 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
         name: 'security_auth_login',
         methods: ['GET', 'POST']
     )
-]
-class LoginPlaceholder
+] class LoginPlaceholder
 {
     public function __invoke(): JsonResponse
     {

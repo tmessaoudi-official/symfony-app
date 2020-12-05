@@ -20,7 +20,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class LogoutManager
 {
-    public function __construct(protected RefreshTokenManager $refreshTokenManager, protected RequestStack $requestStack) {}
+    public function __construct(protected RefreshTokenManager $refreshTokenManager, protected RequestStack $requestStack)
+    {
+    }
 
     public function __invoke(UserInterface | User $user): void
     {

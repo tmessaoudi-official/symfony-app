@@ -23,8 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
         name: 'index',
         methods: ['GET']
     )
-]
-class Index extends AbstractController
+] class Index extends AbstractController
 {
     public function __invoke(): Response
     {

@@ -15,8 +15,8 @@ namespace App\Entity\Behaviour;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidV4Generator;
-use Symfony\Component\Uid\UuidV4;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Uid\UuidV4;
 
 trait Uuidable
 {

@@ -22,16 +22,21 @@ class DemoService
         switch ($operand) {
             case '+':
                 return $x + $y;
+
             case '-':
                 return $x - $y;
+
             case '*':
                 return $x * $y;
+
             case '/':
             case '%':
-                if ($y === 0) {
+                if (0 === $y) {
                     throw new DivisionByZeroError();
                 }
-                return ($operand === '/' ? $x / $y : $x % $y);
+
+                return '/' === $operand ? $x / $y : $x % $y;
+
             default:
                 return null;
         }

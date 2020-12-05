@@ -25,8 +25,7 @@ use Symfony\Component\Security\Core\Security;
         name: 'security_auth_logout',
         methods: ['POST']
     )
-]
-class Logout
+] class Logout
 {
     public function __invoke(Security $security, LogoutService $logoutService): JsonResponse
     {

@@ -22,7 +22,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SuperAdmin extends Fixture implements FixtureGroupInterface
 {
-    public function __construct(protected UserPasswordEncoderInterface $userPasswordEncoder) {}
+    public function __construct(protected UserPasswordEncoderInterface $userPasswordEncoder)
+    {
+    }
 
     public function load(ObjectManager $manager): void
     {

@@ -22,9 +22,11 @@ class OnJWTDecoded
 {
     protected ChainTokenExtractor $chainTokenExtractor;
 
-    public function __construct(protected RequestStack $requestStack, protected CacheInterface $appInvalidedTokens) {}
+    public function __construct(protected RequestStack $requestStack, protected CacheInterface $appInvalidedTokens)
+    {
+    }
 
-    public function setChainTokenExtractor(ChainTokenExtractor $chainTokenExtractor)
+    public function setChainTokenExtractor(ChainTokenExtractor $chainTokenExtractor): void
     {
         $this->chainTokenExtractor = $chainTokenExtractor;
     }

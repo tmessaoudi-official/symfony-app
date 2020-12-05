@@ -23,8 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
         name: 'dummy',
         methods: ['GET', 'POST']
     )
-]
-class Dummy
+] class Dummy
 {
     public function __invoke(): JsonResponse
     {
