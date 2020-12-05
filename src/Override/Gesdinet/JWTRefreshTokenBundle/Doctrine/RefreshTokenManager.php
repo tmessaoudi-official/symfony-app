@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine;
 
-use App\Entity\User;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
@@ -27,7 +26,7 @@ class RefreshTokenManager extends RefreshTokenManagerModel
 
     protected string $class;
 
-    protected RefreshTokenRepository|ObjectRepository $repository;
+    protected RefreshTokenRepository | ObjectRepository $repository;
 
     public function __construct(EntityManagerInterface $entityManager, string $gesdinetJWTRefreshTokenEntityClass)
     {
@@ -39,17 +38,17 @@ class RefreshTokenManager extends RefreshTokenManagerModel
     /**
      * @param string $refreshToken
      */
-    public function get($refreshToken): RefreshTokenInterface|null
+    public function get($refreshToken): RefreshTokenInterface | null
     {
-        return $this->repository->findOneBy(array('refreshToken' => $refreshToken));
+        return $this->repository->findOneBy(['refreshToken' => $refreshToken]);
     }
 
     /**
      * @param string $username
      */
-    public function getLastFromUsername($username): RefreshTokenInterface|null
+    public function getLastFromUsername($username): RefreshTokenInterface | null
     {
-        return $this->repository->findOneBy(array('username' => $username), array('valid' => 'DESC'));
+        return $this->repository->findOneBy(['username' => $username], ['valid' => 'DESC']);
     }
 
     public function save(RefreshTokenInterface $refreshToken, bool $andFlush = true): void
@@ -106,7 +105,6 @@ class RefreshTokenManager extends RefreshTokenManagerModel
 
     /**
      * Returns the RefreshToken fully qualified class name.
-     *
      */
     public function getClass(): string
     {

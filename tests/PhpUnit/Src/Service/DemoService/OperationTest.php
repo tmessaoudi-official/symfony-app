@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace App\Tests\PhpUnit\Src\Service\DemoService;
 
 use App\Service\DemoService;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use const PHP_EOL;
 use DivisionByZeroError;
+use const PHP_EOL;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
@@ -36,7 +36,7 @@ final class OperationTest extends WebTestCase
      */
     public function testInvoke(string $operand, float $x, float $y, float | null $expected, string $testName, array | null $options = []): void
     {
-        echo PHP_EOL. DemoService::class . "->operation(string '{$operand}', float {$x}, float {$y}): ?float {$expected} => {$testName} --- {$x} {$operand} {$y} = {$expected}".PHP_EOL;
+        echo PHP_EOL.DemoService::class."->operation(string '{$operand}', float {$x}, float {$y}): ?float {$expected} => {$testName} --- {$x} {$operand} {$y} = {$expected}".PHP_EOL;
         $this->demoService = self::$container->get(DemoService::class);
 
         if (@$options['exception']) {

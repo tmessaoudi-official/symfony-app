@@ -20,7 +20,7 @@ use Doctrine\Persistence\ObjectRepository;
 
 class UserManager
 {
-    protected UserRepository|ObjectRepository $repository;
+    protected UserRepository | ObjectRepository $repository;
 
     public function __construct(protected EntityManagerInterface $entityManager)
     {

@@ -977,12 +977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/event-manager.git",
-                "reference": "4c9b09abb50fc37ad81777b60893f3b630cad2b2"
+                "reference": "05ffbf806becc665a71625b3520dbf01f61b56bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/4c9b09abb50fc37ad81777b60893f3b630cad2b2",
-                "reference": "4c9b09abb50fc37ad81777b60893f3b630cad2b2",
+                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/05ffbf806becc665a71625b3520dbf01f61b56bf",
+                "reference": "05ffbf806becc665a71625b3520dbf01f61b56bf",
                 "shasum": ""
             },
             "require": {
@@ -992,9 +992,9 @@
                 "doctrine/common": "<2.9@dev"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0",
+                "doctrine/coding-standard": "^8.0",
                 "phpstan/phpstan": "^0.12.58",
-                "phpunit/phpunit": "^7.0"
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
             },
             "default-branch": true,
             "type": "library",
@@ -1065,7 +1065,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-03T18:39:44+00:00"
+            "time": "2020-12-04T21:29:18+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1425,12 +1425,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "418587bc25c107f16b53ae67a6ef8589408aff6c"
+                "reference": "242cf1a33df1b8bc5e1b86c3ebd01db07851c833"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/418587bc25c107f16b53ae67a6ef8589408aff6c",
-                "reference": "418587bc25c107f16b53ae67a6ef8589408aff6c",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/242cf1a33df1b8bc5e1b86c3ebd01db07851c833",
+                "reference": "242cf1a33df1b8bc5e1b86c3ebd01db07851c833",
                 "shasum": ""
             },
             "require": {
@@ -1459,7 +1459,6 @@
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "default-branch": true,
             "bin": [
                 "bin/doctrine"
             ],
@@ -1508,9 +1507,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/orm/issues",
-                "source": "https://github.com/doctrine/orm/tree/2.8.0"
+                "source": "https://github.com/doctrine/orm/tree/2.8.1"
             },
-            "time": "2020-12-03T19:18:13+00:00"
+            "time": "2020-12-04T19:53:07+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -10931,12 +10930,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "16a03fadb5473f49aad70384002dfd5012fe680e"
+                "reference": "d591b325497576085853ea01bb38836afaccc555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/16a03fadb5473f49aad70384002dfd5012fe680e",
-                "reference": "16a03fadb5473f49aad70384002dfd5012fe680e",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/d591b325497576085853ea01bb38836afaccc555",
+                "reference": "d591b325497576085853ea01bb38836afaccc555",
                 "shasum": ""
             },
             "require": {
@@ -10989,7 +10988,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/data-fixtures/issues",
-                "source": "https://github.com/doctrine/data-fixtures/tree/1.4.4"
+                "source": "https://github.com/doctrine/data-fixtures/tree/1.4.x"
             },
             "funding": [
                 {
@@ -11005,7 +11004,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-01T07:13:28+00:00"
+            "time": "2020-12-04T21:34:48+00:00"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",

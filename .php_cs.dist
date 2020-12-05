@@ -24,6 +24,7 @@ return (new PhpCsFixer\Config())
         '@PHP80Migration' => true,
         '@PHP80Migration:risky' => true,
         '@PHPUnit75Migration:risky' => true,
+        'visibility_required' => false,
         'strict_param' => true,
         'php_unit_dedicate_assert' => ['target' => '5.6'],
         'array_syntax' => ['syntax' => 'short'],
