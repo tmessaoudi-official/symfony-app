@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "43335fd087466ffd975be822755b0efa37b90729"
+                "reference": "435992613de0a012ad42b5352e71453a35061968"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/43335fd087466ffd975be822755b0efa37b90729",
-                "reference": "43335fd087466ffd975be822755b0efa37b90729",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/435992613de0a012ad42b5352e71453a35061968",
+                "reference": "435992613de0a012ad42b5352e71453a35061968",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-05T13:39:05+00:00"
+            "time": "2020-12-06T13:24:27+00:00"
         },
         {
             "name": "brick/math",
