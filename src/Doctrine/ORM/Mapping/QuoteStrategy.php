@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * Personal project using Php 8/Symfony 5.2.x@dev.
+ *
+ * @author       : Takieddine Messaoudi <takieddine.messaoudi.official@gmail.com>
+ * @organization : Smart Companion
+ * @contact      : takieddine.messaoudi.official@gmail.com
+ *
+ */
+
+declare(strict_types=1);
+
 namespace App\Doctrine\ORM\Mapping;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
@@ -10,12 +21,12 @@ class QuoteStrategy implements IQuoteStrategy
 {
     public function getColumnName($fieldName, ClassMetadata $class, AbstractPlatform $platform)
     {
-        return '`' . $class->fieldMappings[$fieldName]['columnName'] . '`';
+        return '`'.$class->fieldMappings[$fieldName]['columnName'].'`';
     }
 
     public function getTableName(ClassMetadata $class, AbstractPlatform $platform)
     {
-        return '`' . $class->table['name'] . '`';
+        return '`'.$class->table['name'].'`';
     }
 
     public function getSequenceName(array $definition, ClassMetadata $class, AbstractPlatform $platform)
@@ -35,7 +46,7 @@ class QuoteStrategy implements IQuoteStrategy
 
     public function getJoinTableName(array $association, ClassMetadata $class, AbstractPlatform $platform)
     {
-        return '`' . $association['joinTable']['name'] . '`';
+        return '`'.$association['joinTable']['name'].'`';
     }
 
     public function getIdentifierColumnNames(ClassMetadata $class, AbstractPlatform $platform)
@@ -45,6 +56,6 @@ class QuoteStrategy implements IQuoteStrategy
 
     public function getColumnAlias($columnName, $counter, AbstractPlatform $platform, ClassMetadata $class = null)
     {
-        return $platform->getSQLResultCasing($columnName . '_' . $counter);
+        return $platform->getSQLResultCasing($columnName.'_'.$counter);
     }
 }

@@ -125,8 +125,8 @@
         "schema:validate": "./bin/console doctrine:schema:validate --skip-sync",
         "yaml:lint": "./bin/console lint:yaml config/ --ansi",
         "twig:lint": "./bin/console lint:twig templates/ --ansi",
-        "cs:check": "./vendor/bin/php-cs-fixer fix --dry-run --verbose --ansi",
-        "cs:fix": "./vendor/bin/php-cs-fixer fix --ansi --verbose",
+        "cs:check": "PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix --dry-run --verbose --ansi",
+        "cs:fix": "PHP_CS_FIXER_IGNORE_ENV=true ./vendor/bin/php-cs-fixer fix --ansi --verbose",
         "check": [
             "@schema:validate",
             "@yaml:lint",
