@@ -20,10 +20,14 @@ use Symfony\Contracts\Cache\CacheInterface;
 
 class OnJWTDecoded
 {
+    protected RequestStack $requestStack;
+    protected CacheInterface $appInvalidedTokens;
     protected ChainTokenExtractor $chainTokenExtractor;
 
-    public function __construct(protected RequestStack $requestStack, protected CacheInterface $appInvalidedTokens)
+    public function __construct(RequestStack $requestStack, CacheInterface $appInvalidedTokens)
     {
+        $this->requestStack = $requestStack;
+        $this->appInvalidedTokens = $appInvalidedTokens;
     }
 
     public function setChainTokenExtractor(ChainTokenExtractor $chainTokenExtractor): void

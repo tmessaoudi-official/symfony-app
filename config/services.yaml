@@ -38,7 +38,7 @@ services:
         decorates: 'gesdinet.jwtrefreshtoken.refresh_token_manager'
         autoconfigure: false
     App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer:
-        decorates: 'api_platform.openapi.normalizer'
+        decorates: 'api_platform.swagger.normalizer.api_gateway'
         calls:
             - setDecorationInner: [ '@App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer.inner' ]
         autoconfigure: false

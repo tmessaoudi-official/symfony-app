@@ -20,8 +20,11 @@ use const DIRECTORY_SEPARATOR;
 
 class FilenameGenerator
 {
-    public function __construct(protected string $basePath)
+    protected string $basePath;
+
+    public function __construct(string $basePath)
     {
+        $this->basePath = $basePath;
     }
 
     public function generateFileName(FeatureNode $featureNode, ScenarioInterface $scenarioNode): string
@@ -35,6 +38,9 @@ class FilenameGenerator
 
     /**
      * Transforms path to relative.
+     * @param string $path
+     *
+     * @return string
      */
     protected function relativizePaths(string $path): string
     {

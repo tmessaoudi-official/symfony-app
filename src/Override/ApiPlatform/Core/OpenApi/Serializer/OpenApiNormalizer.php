@@ -13,15 +13,14 @@ declare(strict_types=1);
 
 namespace App\Override\ApiPlatform\Core\OpenApi\Serializer;
 
-use ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer as OriginalOpenApiNormalizer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class OpenApiNormalizer implements NormalizerInterface
 {
-    protected OriginalOpenApiNormalizer $decorated;
+    protected NormalizerInterface $decorated;
 
-    public function setDecorationInner(OriginalOpenApiNormalizer $decorated): void
+    public function setDecorationInner(NormalizerInterface $decorated): void
     {
         $this->decorated = $decorated;
     }

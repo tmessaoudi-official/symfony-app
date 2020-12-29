@@ -18,8 +18,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class OnJWTCreated
 {
-    public function __construct(protected RequestStack $requestStack)
+    protected RequestStack $requestStack;
+    public function __construct(RequestStack $requestStack)
     {
+        $this->requestStack = $requestStack;
     }
 
     public function onJWTCreated(JWTCreatedEvent $event): void

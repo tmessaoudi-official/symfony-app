@@ -35,7 +35,7 @@ class LogoutService
         $this->jWTTokenTTL = $jWTTokenTTL;
     }
 
-    public function __invoke(TokenInterface | JWTUserToken $JWTUserToken): void
+    public function __invoke(TokenInterface $JWTUserToken): void
     {
         $this->logoutManager->__invoke($JWTUserToken->getUser());
 
@@ -60,7 +60,7 @@ class LogoutService
         $this->appInvalidedTokens->save($item);
     }
 
-    protected function getTokenString(TokenInterface | JWTUserToken $JWTUserToken)
+    protected function getTokenString(TokenInterface $JWTUserToken)
     {
         $reflection = new ReflectionClass(\get_class($JWTUserToken));
         $rawToken = $reflection->getProperty('rawToken');

@@ -38,7 +38,7 @@ class RefreshToken
 
     protected AuthenticationFailureHandlerInterface $failureHandler;
 
-    protected RefreshTokenManagerInterface | RefreshTokenManager $refreshTokenManager;
+    protected RefreshTokenManagerInterface $refreshTokenManager;
 
     protected int $ttl;
 
@@ -55,7 +55,7 @@ class RefreshToken
         RefreshTokenProvider $provider,
         AuthenticationSuccessHandlerInterface $successHandler,
         AuthenticationFailureHandlerInterface $failureHandler,
-        RefreshTokenManagerInterface | RefreshTokenManager $refreshTokenManager,
+        RefreshTokenManagerInterface $refreshTokenManager,
         int $ttl,
         string $providerKey,
         bool $ttlUpdate,

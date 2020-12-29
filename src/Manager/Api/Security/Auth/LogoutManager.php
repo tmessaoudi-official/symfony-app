@@ -20,11 +20,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class LogoutManager
 {
-    public function __construct(protected RefreshTokenManager $refreshTokenManager, protected RequestStack $requestStack)
+    protected RefreshTokenManager $refreshTokenManager;
+    protected RequestStack $requestStack;
+    public function __construct(RefreshTokenManager $refreshTokenManager, RequestStack $requestStack)
     {
+        $this->refreshTokenManager = $refreshTokenManager;
+        $this->requestStack = $requestStack;
     }
 
-    public function __invoke(UserInterface | User $user): void
+    public function __invoke(UserInterface $user): void
     {
         //$this->refreshTokenManager->revokeAllInvalid();
         //$this->refreshTokenManager->delete($this->refreshTokenManager->getLastFromUsername($user->getEmail()));

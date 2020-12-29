@@ -214,7 +214,7 @@ class User implements UserInterface, Serializable
         [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
-    public function getDummies(): Collection | array
+    public function getDummies(): Collection
     {
         return $this->dummies;
     }

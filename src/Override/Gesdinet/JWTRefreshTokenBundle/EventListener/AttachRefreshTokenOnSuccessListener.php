@@ -31,7 +31,7 @@ class AttachRefreshTokenOnSuccessListener extends OriginalAttachRefreshTokenOnSu
     protected OriginalAttachRefreshTokenOnSuccessListener $decorated;
 
     public function __construct(
-        RefreshTokenManagerInterface | RefreshTokenManager $refreshTokenManager,
+        RefreshTokenManagerInterface $refreshTokenManager,
         $ttl,
         ValidatorInterface $validator,
         RequestStack $requestStack,

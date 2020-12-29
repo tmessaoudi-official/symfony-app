@@ -26,7 +26,7 @@ class RefreshTokenManager extends RefreshTokenManagerModel
 
     protected string $class;
 
-    protected RefreshTokenRepository | ObjectRepository $repository;
+    protected ObjectRepository $repository;
 
     public function __construct(EntityManagerInterface $entityManager, string $gesdinetJWTRefreshTokenEntityClass)
     {
@@ -38,7 +38,7 @@ class RefreshTokenManager extends RefreshTokenManagerModel
     /**
      * @param string $refreshToken
      */
-    public function get($refreshToken): RefreshTokenInterface | null
+    public function get($refreshToken): ?RefreshTokenInterface
     {
         return $this->repository->findOneBy(['refreshToken' => $refreshToken]);
     }
@@ -46,7 +46,7 @@ class RefreshTokenManager extends RefreshTokenManagerModel
     /**
      * @param string $username
      */
-    public function getLastFromUsername($username): RefreshTokenInterface | null
+    public function getLastFromUsername($username): ?RefreshTokenInterface
     {
         return $this->repository->findOneBy(['username' => $username], ['valid' => 'DESC']);
     }
