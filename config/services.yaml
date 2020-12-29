@@ -37,10 +37,10 @@ services:
     App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager:
         decorates: 'gesdinet.jwtrefreshtoken.refresh_token_manager'
         autoconfigure: false
-    App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer:
+    App\Override\ApiPlatform\Core\Swagger\Serializer\ApiGatewayNormalizer:
         decorates: 'api_platform.swagger.normalizer.api_gateway'
         calls:
-            - setDecorationInner: [ '@App\Override\ApiPlatform\Core\OpenApi\Serializer\OpenApiNormalizer.inner' ]
+            - setDecorationInner: [ '@App\Override\ApiPlatform\Core\Swagger\Serializer\ApiGatewayNormalizer.inner' ]
         autoconfigure: false
     App\Override\Gesdinet\JWTRefreshTokenBundle\EventListener\AttachRefreshTokenOnSuccessListener:
         decorates: 'gesdinet.jwtrefreshtoken.send_token'

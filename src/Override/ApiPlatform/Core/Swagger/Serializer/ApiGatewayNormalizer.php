@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace App\Override\ApiPlatform\Core\OpenApi\Serializer;
+namespace App\Override\ApiPlatform\Core\Swagger\Serializer;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-final class OpenApiNormalizer implements NormalizerInterface
+final class ApiGatewayNormalizer implements NormalizerInterface
 {
     protected NormalizerInterface $decorated;
 
