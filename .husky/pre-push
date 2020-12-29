@@ -1,0 +1,3 @@
+#!/bin/sh
+
+npx --no-install ts-node .git-branchingrc.ts

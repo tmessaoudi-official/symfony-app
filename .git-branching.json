@@ -1,0 +1,15 @@
+{
+    "root": {
+        "allowed": [],
+        "disallowed": ["master", "develop"]
+    },
+    "flow": {
+        "separator": "/",
+        "prefix": ["feature", "fix", "hotfix", "release"],
+        "suffix": {
+            "regex": "(SPARAC\\-\\d{1,5})"
+        },
+        "range": [7, 18]
+    },
+    "skipMerge": true
+}

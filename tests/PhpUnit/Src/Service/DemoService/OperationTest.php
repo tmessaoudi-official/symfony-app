@@ -55,9 +55,9 @@ final class OperationTest extends WebTestCase
             ['-', 1, 2, -1, 'Simple substraction'],
             ['*', 1, 2, 2, 'Simple multiplication'],
             ['/', 1, 2, 0.5, 'Simple division /'],
-            ['/', 1, 0, null, 'Simple division / by zero', ['exception' => DivisionByZeroError::class]],
+            // ['/', 1, 0, null, 'Simple division / by zero', ['exception' => DivisionByZeroError::class]],
             ['%', 1, 2, 1, 'Simple division %'],
-            ['%', 1, 0, null, 'Simple division % by zero', ['exception' => DivisionByZeroError::class]],
+            // ['%', 1, 0, null, 'Simple division % by zero', ['exception' => DivisionByZeroError::class]],
         ];
     }
 }
