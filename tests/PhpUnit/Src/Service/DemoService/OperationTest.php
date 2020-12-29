@@ -24,7 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 final class OperationTest extends WebTestCase
 {
-    protected DemoService | null $demoService;
+    protected ?DemoService $demoService;
 
     protected function setUp(): void
     {
@@ -34,7 +34,7 @@ final class OperationTest extends WebTestCase
     /**
      * @dataProvider provider
      */
-    public function testInvoke(string $operand, float $x, float $y, float | null $expected, string $testName, array | null $options = []): void
+    public function testInvoke(string $operand, float $x, float $y, ?float $expected, string $testName, ?array $options = []): void
     {
         echo PHP_EOL.DemoService::class."->operation(string '{$operand}', float {$x}, float {$y}): ?float {$expected} => {$testName} --- {$x} {$operand} {$y} = {$expected}".PHP_EOL;
         $this->demoService = self::$container->get(DemoService::class);
