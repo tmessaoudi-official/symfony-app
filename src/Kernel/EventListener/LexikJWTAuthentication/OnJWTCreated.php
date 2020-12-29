@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class OnJWTCreated
 {
     protected RequestStack $requestStack;
+
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;

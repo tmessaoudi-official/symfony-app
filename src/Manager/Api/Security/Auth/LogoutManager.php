@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace App\Manager\Api\Security\Auth;
 
-use App\Entity\User;
 use App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -22,6 +21,7 @@ class LogoutManager
 {
     protected RefreshTokenManager $refreshTokenManager;
     protected RequestStack $requestStack;
+
     public function __construct(RefreshTokenManager $refreshTokenManager, RequestStack $requestStack)
     {
         $this->refreshTokenManager = $refreshTokenManager;

@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace App\Override\Gesdinet\JWTRefreshTokenBundle\Service;
 
-use App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager;
 use App\Service\Api\Security\Auth\LogoutService;
 use Gesdinet\JWTRefreshTokenBundle\Event\RefreshEvent;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManagerInterface;

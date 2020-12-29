@@ -16,7 +16,6 @@ namespace App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
-use Gesdinet\JWTRefreshTokenBundle\Entity\RefreshTokenRepository;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenInterface;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManager as RefreshTokenManagerModel;
 

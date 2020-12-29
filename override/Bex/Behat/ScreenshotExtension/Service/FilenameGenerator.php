@@ -38,9 +38,6 @@ class FilenameGenerator
 
     /**
      * Transforms path to relative.
-     * @param string $path
-     *
-     * @return string
      */
     protected function relativizePaths(string $path): string
     {

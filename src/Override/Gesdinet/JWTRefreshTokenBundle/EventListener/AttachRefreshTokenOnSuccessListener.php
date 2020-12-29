@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace App\Override\Gesdinet\JWTRefreshTokenBundle\EventListener;
 
-use App\Override\Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager;
 use App\Override\Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken;
 use DateTime;
 use Gesdinet\JWTRefreshTokenBundle\EventListener\AttachRefreshTokenOnSuccessListener as OriginalAttachRefreshTokenOnSuccessListener;

@@ -16,7 +16,6 @@ namespace App\Service\Api\Security\Auth;
 use App\Manager\Api\Security\Auth\LogoutManager;
 use DateInterval;
 use DateTime;
-use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\JWTUserToken;
 use ReflectionClass;
 use Symfony\Component\Cache\CacheItem;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
