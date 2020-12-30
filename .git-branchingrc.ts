@@ -39,33 +39,33 @@ class GitBranching {
         );
     }
 
-    protected exec(args: Array<String | Array<String>>): String {
+    protected exec(command: String, args: Array<String>): String {
         return (
             childProcess
                 // @ts-ignore
-                .execFileSync(...args)
+                .execFileSync(command, args)
                 .toString()
                 .trim()
         );
     }
 
     protected getGitBranchName(): String {
-        return this.exec([`git`, [`rev-parse`, `--abbrev-ref`, `HEAD`]]);
+        return this.exec(`git`, [`rev-parse`, `--abbrev-ref`, `HEAD`]);
     }
 
     protected getGitLastCommitMessage(): String {
-        return this.exec([`git`, [`log`, `-1`]]);
+        return this.exec(`git`, [`log`, `-1`]);
     }
 
     protected getGitLastMergeCommitMessage(): String {
-        return this.exec([`git`, [`log`, `--merges`, `-n`, `1`]]);
+        return this.exec(`git`, [`log`, `--merges`, `-n`, `1`]);
     }
 
     protected shouldSkip(): boolean {
         return (
             (this.config.skipMerge &&
                 this.getGitLastMergeCommitMessage() ===
-                    this.getGitLastCommitMessage()) ||
+                this.getGitLastCommitMessage()) ||
             this.config.root.allowed.includes(this.getGitBranchName())
         );
     }
@@ -167,14 +167,15 @@ class GitBranching {
     public run(): void {
         if (this.config.scripts) {
             this.config.scripts.forEach((value, index) => {
-                console.log(`-- ${value[0]}`.white.bgGreen);
                 let output = null;
+                console.log(`-- Running : ${value[0]} ...`.white.bgYellow);
                 try {
-                    output = this.exec(<Array<String | Array<String>>>value[1]);
+                    output = this.exec(<String>value[1][0], <Array<String>>value[1][1]);
                 } catch (exception) {
-                    console.log(`-- ${value[0]} -- error`.white.bgRed);
+                    console.log(`-- ${value[0]} ✗`.white.bgRed);
                     process.exit(1);
                 }
+                console.log(`-- ${value[0]} ✓`.white.bgGreen);
             })
         }
         if (this.shouldSkip()) {

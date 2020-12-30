@@ -43,6 +43,9 @@ module.exports = {
         cmd.push(
             `composer check`,
         );
+        cmd.push(
+            `composer cs:fix`,
+        );
         return cmd;
     },
 };
