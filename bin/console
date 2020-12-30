@@ -37,14 +37,18 @@ try {
 } catch (Exception $exception) {
 }
 
-try {
-    $dotEnv->bootEnv(__DIR__.'/../.env.'.$_ENV['APP_ENV']);
-} catch (Exception $exception) {
+if (@$_ENV['APP_ENV']) {
+    try {
+        $dotEnv->bootEnv(__DIR__.'/../.env.'.$_ENV['APP_ENV']);
+    } catch (Exception $exception) {
+    }
 }
 
-try {
-    $dotEnv->bootEnv(__DIR__.'/../.env.'.$_ENV['APP_ENV'].'.local');
-} catch (Exception $exception) {
+if (@$_ENV['APP_ENV']) {
+    try {
+        $dotEnv->bootEnv(__DIR__.'/../.env.'.$_ENV['APP_ENV'].'.local');
+    } catch (Exception $exception) {
+    }
 }
 
 if ($_SERVER['APP_DEBUG']) {

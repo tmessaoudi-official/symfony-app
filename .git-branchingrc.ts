@@ -15,6 +15,8 @@ interface Config {
         };
         range: Array<Number>;
     };
+    // format ["description", ["command", [args ...]]
+    scripts?: Array<Array<String | Array<String | Array<String>>>> | never
     skipMerge: boolean | true;
 }
 
@@ -37,7 +39,7 @@ class GitBranching {
         );
     }
 
-    protected gitExec(args: Array<Object>): String {
+    protected exec(args: Array<String | Array<String>>): String {
         return (
             childProcess
                 // @ts-ignore
@@ -48,15 +50,15 @@ class GitBranching {
     }
 
     protected getGitBranchName(): String {
-        return this.gitExec([`git`, [`rev-parse`, `--abbrev-ref`, `HEAD`]]);
+        return this.exec([`git`, [`rev-parse`, `--abbrev-ref`, `HEAD`]]);
     }
 
     protected getGitLastCommitMessage(): String {
-        return this.gitExec([`git`, [`log`, `-1`]]);
+        return this.exec([`git`, [`log`, `-1`]]);
     }
 
     protected getGitLastMergeCommitMessage(): String {
-        return this.gitExec([`git`, [`log`, `--merges`, `-n`, `1`]]);
+        return this.exec([`git`, [`log`, `--merges`, `-n`, `1`]]);
     }
 
     protected shouldSkip(): boolean {
@@ -163,6 +165,18 @@ class GitBranching {
     }
 
     public run(): void {
+        if (this.config.scripts) {
+            this.config.scripts.forEach((value, index) => {
+                console.log(`-- ${value[0]}`.white.bgGreen);
+                let output = null;
+                try {
+                    output = this.exec(<Array<String | Array<String>>>value[1]);
+                } catch (exception) {
+                    console.log(`-- ${value[0]} -- error`.white.bgRed);
+                    process.exit(1);
+                }
+            })
+        }
         if (this.shouldSkip()) {
             console.log(
                 `Ignoring git branching script, it seems like you are merging something or allowed to push to ${this.getGitBranchName()} :)`

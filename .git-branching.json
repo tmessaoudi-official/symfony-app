@@ -11,5 +11,10 @@
         },
         "range": [7, 18]
     },
+    "scripts": [
+        ["Console cache:clear", ["bin/console", ["c:c"]]],
+        ["Phpunit tests", ["bin/phpunit", []]],
+        ["Behat tests", ["bin/behat", []]]
+    ],
     "skipMerge": true
 }
